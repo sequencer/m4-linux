@@ -1,0 +1,12 @@
+/result
+/results
+/artifacts/
+/.irecovery
+__pycache__/
+*.pyc
+/experiments/*/raw/
+/experiments/*/build/
+*.ipsw
+*.im4p
+*.dmg
+*.img

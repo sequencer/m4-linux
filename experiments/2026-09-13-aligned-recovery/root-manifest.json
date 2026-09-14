@@ -1,0 +1,39 @@
+{
+  "source": "/home/sequencer/project/m4-linux/artifacts/apple/25G83/derived/022-22048-093.dmg",
+  "source_sha256": "eeda386b1fb66a313cadef26e3e7ee06643d4d5ea8b3330a411a118ac7d14ed3",
+  "whole_disk": "/home/sequencer/project/m4-linux/experiments/2026-09-13-aligned-recovery/raw/recovery-25G83.apfs.whole-disk.raw",
+  "whole_disk_sha256": "75ad9b16a77753db7e8c22be5cdb517491572658da11b06309ab96b7d73ee719",
+  "whole_disk_geometry": {
+    "size": 1574995456,
+    "initial_apfs_magic": false,
+    "gpt": {
+      "header_crc_valid": true,
+      "entries_crc_valid": true,
+      "partitions": [
+        {
+          "type_guid": "7c3457ef-0000-11aa-aa11-00306543ecac",
+          "offset": 17408,
+          "size": 1574961152,
+          "offset_aligned_for_memdev": false,
+          "apfs_magic": true,
+          "apfs_block_size": 4096,
+          "apfs_block_count": 384512
+        }
+      ]
+    }
+  },
+  "partition": {
+    "type_guid": "7c3457ef-0000-11aa-aa11-00306543ecac",
+    "offset": 17408,
+    "size": 1574961152,
+    "offset_aligned_for_memdev": false,
+    "apfs_magic": true,
+    "apfs_block_size": 4096,
+    "apfs_block_count": 384512
+  },
+  "root": "/home/sequencer/project/m4-linux/experiments/2026-09-13-aligned-recovery/raw/recovery-25G83.apfs.raw",
+  "root_size": 1574961152,
+  "root_sha256": "bda0c53dfb35ceffe371c1708b2443b9d55f60a70bbcbbcf6470bade2b552e9a",
+  "required_physical_alignment": 16384,
+  "guest_boot_verified": false
+}

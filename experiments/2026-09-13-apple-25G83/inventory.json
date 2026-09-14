@@ -1,0 +1,498 @@
+{
+  "ipsw_sha256": "885503b7f4b06609e9a512f2befd40f59730640a3f1233e3892d60affdd51c95",
+  "product_version": "26.6.2",
+  "build": "25G83",
+  "device_class": "j713ap",
+  "chip_id": "0x8132",
+  "board_id": "0x2C",
+  "variants": [
+    "Customer Erase Install (IPSW)",
+    "Customer Upgrade Install (IPSW)",
+    "macOS Customer"
+  ],
+  "excluded": [
+    "OS image",
+    "system canonical metadata",
+    "Cryptex components"
+  ],
+  "files": [
+    {
+      "path": "022-22048-093.dmg.aea",
+      "bytes": 1140850688,
+      "sha256": "4e91f4949f0614de01f44434bce2a5a45b0e0a92ca0e3b06cd55c229752a9754",
+      "components": [
+        "BaseSystem"
+      ]
+    },
+    {
+      "path": "094-96989-093.dmg",
+      "bytes": 211812379,
+      "sha256": "934c21768e2fe036c33ba884bcce727d4e9f8e10c72733bf6d6f40da2dd99be8",
+      "components": [
+        "RestoreRamDisk"
+      ]
+    },
+    {
+      "path": "094-97199-093.dmg",
+      "bytes": 211812379,
+      "sha256": "9a20f85d73d4d9f4ceaa35d2457e177ef97446df91bfc2ded2f06980eb39d999",
+      "components": [
+        "RestoreRamDisk"
+      ]
+    },
+    {
+      "path": "BuildManifest.plist",
+      "bytes": 26535137,
+      "sha256": "e8ff2cdd3e8ab3a668132bf9453948b70f1863b849a6185914f54a9ec25356d3",
+      "components": [
+        "auxiliary"
+      ]
+    },
+    {
+      "path": "Firmware/022-22048-093.dmg.aea.root_hash",
+      "bytes": 229,
+      "sha256": "577661fd264e5745736d4d31ff14598c5ad1f7360fad5092f79ac04b7562e8d9",
+      "components": [
+        "BaseSystemVolume"
+      ]
+    },
+    {
+      "path": "Firmware/022-22048-093.dmg.aea.trustcache",
+      "bytes": 25799,
+      "sha256": "763bc8fb472135c344282bcdb65c8c41f1d78d0e5055d943e7c8ac2f4c176a65",
+      "components": [
+        "Ap,BaseSystemTrustCache"
+      ]
+    },
+    {
+      "path": "Firmware/094-96884-092.dmg.aea.root_hash",
+      "bytes": 229,
+      "sha256": "d4f4a8cffa7c6476ae06f6018dd6335a9f9449d0c928b2ed24eddb85ee25017f",
+      "components": [
+        "SystemVolume"
+      ]
+    },
+    {
+      "path": "Firmware/094-96884-092.dmg.aea.trustcache",
+      "bytes": 364033,
+      "sha256": "62ed8f2a85eff12b799fd328ca4904a501baed75850525bb0006ffab63433624",
+      "components": [
+        "StaticTrustCache"
+      ]
+    },
+    {
+      "path": "Firmware/094-96989-093.dmg.trustcache",
+      "bytes": 11553,
+      "sha256": "d7fcfe2540155990cdfc70613a9eef6ab3240c8a803609746a618393956c3c85",
+      "components": [
+        "RestoreTrustCache"
+      ]
+    },
+    {
+      "path": "Firmware/094-97199-093.dmg.trustcache",
+      "bytes": 11553,
+      "sha256": "66b8c64fb48a6b8a0ef1c6fffc03035192ed44cd7b63e6982f8f61c57a76c312",
+      "components": [
+        "RestoreTrustCache"
+      ]
+    },
+    {
+      "path": "Firmware/AOP/aopfw-mac16gaop.RELEASE.im4p",
+      "bytes": 2134041,
+      "sha256": "290361b844a25996679ef1af4dbebaedfec3bf8bad8a84d79595b9d54f5c19e4",
+      "components": [
+        "AOP"
+      ]
+    },
+    {
+      "path": "Firmware/Ace3/j71a/usbcfw_j71a.uarp",
+      "bytes": 95529,
+      "sha256": "ff8aff023a59f9c8dccbb8f8f8be1d739316a6adbb65efee7986fe1da142146d",
+      "components": [
+        "USBPortController1,USBFirmware",
+        "USBPortController2,USBFirmware"
+      ]
+    },
+    {
+      "path": "Firmware/DP855/X3240/X3240.bin",
+      "bytes": 1417226,
+      "sha256": "cb3100cdf524da0bdcc9624213f629f8e9d36f88a1309cac68c30b4f8fc7f41a",
+      "components": [
+        "Baobab,TCON"
+      ]
+    },
+    {
+      "path": "Firmware/J713_InputDevice.im4p",
+      "bytes": 101972,
+      "sha256": "521e6c262112f0974b861b0e15517c614410b01f9969f634cdb7e825e64e2acb",
+      "components": [
+        "InputDevice"
+      ]
+    },
+    {
+      "path": "Firmware/J713_MtpFirmware.im4p",
+      "bytes": 897616,
+      "sha256": "2d060715ca577f81771e12616b755811c59cc72f15bdc9653cfeb0c67da1c7fd",
+      "components": [
+        "MtpFirmware"
+      ]
+    },
+    {
+      "path": "Firmware/J713_Multitouch.im4p",
+      "bytes": 111535,
+      "sha256": "f27e6714b952598ec525581029e33524d235a8e3c8d361fa6a142b5984dce53f",
+      "components": [
+        "Multitouch"
+      ]
+    },
+    {
+      "path": "Firmware/SE/StockholmJ.RELEASE.sefw",
+      "bytes": 7297787,
+      "sha256": "188838eb7aecefc451205576a3554c96c8778783cdd31057c758008f27d88997",
+      "components": [
+        "SE,UpdatePayload"
+      ]
+    },
+    {
+      "path": "Firmware/SmartIOFirmware_ASCv7.im4p",
+      "bytes": 1152885,
+      "sha256": "d8f10d46c0b414c378aa0fcb7182d008906a98855b9ce1781625fb7d66cb0c3b",
+      "components": [
+        "SIO"
+      ]
+    },
+    {
+      "path": "Firmware/agx/armfw_g16g.im4p",
+      "bytes": 3422345,
+      "sha256": "d900e6db6cd08f1e138a24239b90396b1bd686dd265a9881041fc7e6a90ee9b2",
+      "components": [
+        "GFX"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/DeviceTree.j713ap.im4p",
+      "bytes": 51666,
+      "sha256": "d64dbb52744e7b61461a3290cfe40e059bdcebdd23129cceed60c8219854badc",
+      "components": [
+        "DeviceTree",
+        "RestoreDeviceTree"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/LLB.j713.RELEASE.im4p",
+      "bytes": 1350391,
+      "sha256": "65d98a6314562a3c49f36cc7d6bb00fc8d99982a4790a86b47f8c79a01e06d33",
+      "components": [
+        "LLB"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/applelogo@2x~mac-USBc.im4p",
+      "bytes": 8472,
+      "sha256": "8067e7de0002884f17fdaa51de09d64570b9ab4a8a261c0a651684786f7a195f",
+      "components": [
+        "AppleLogo",
+        "RestoreLogo"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/batterycharging0@2x~mac-USBc.im4p",
+      "bytes": 794,
+      "sha256": "07d329d3afd7e65ffdeb72d6541b2ecabadf061b775efed5acdd63bd2c533b77",
+      "components": [
+        "BatteryCharging0"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/batterycharging1@2x~mac-USBc.im4p",
+      "bytes": 829,
+      "sha256": "23f9c58c720d22ea3d9efdb13e927566c0b4068097d2c3ffe23b826c2c2e1071",
+      "components": [
+        "BatteryCharging1"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/batteryfull@2x~mac.im4p",
+      "bytes": 22865,
+      "sha256": "942a65a681833dae46a513f825479f022e9bbb0fa4ae40ec4903a25ee012c227",
+      "components": [
+        "BatteryFull"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/batterylow0@2x~mac.im4p",
+      "bytes": 23545,
+      "sha256": "3695a5a7b3994938cbfcd8a7047d22555dee558ce6028dece29d70f8232272ee",
+      "components": [
+        "BatteryLow0"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/batterylow1@2x~mac.im4p",
+      "bytes": 1904,
+      "sha256": "643c86759f34326c0a5769714562b9fd393755d0dc4e144588b05557132a4174",
+      "components": [
+        "BatteryLow1"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/glyphplugin@2x~mac-USBc.im4p",
+      "bytes": 2595,
+      "sha256": "788396f294790f914b8fde7807d0bb473c6fda88d1456cddb3ca511ebe962b94",
+      "components": [
+        "BatteryPlugin"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/iBoot.j713.RELEASE.im4p",
+      "bytes": 1141145,
+      "sha256": "b596d4f75be1cbe5cdc67298e9dfd3e740895afffcff669a0ece1ad3cf0a67ce",
+      "components": [
+        "iBoot"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/iBootData.j713.RELEASE.im4p",
+      "bytes": 127,
+      "sha256": "08ee74a248ff4bb545f77a6a81a11411b4d8d518b1d7d90c6380726a66b8ec02",
+      "components": [
+        "iBootData"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/recoverymode@2x~mac-USBc.im4p",
+      "bytes": 155799,
+      "sha256": "9f93757bdfb239fc1219821ae828f396d5c2fc834e22687134dc21f70b8b54c3",
+      "components": [
+        "RecoveryMode"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/recoveryoslogo1@2x~mac-USBc.im4p",
+      "bytes": 216949,
+      "sha256": "4e06ae370f4e6f3ba38a984bf737a62c570fa6909573436618cf892eca5de7ef",
+      "components": [
+        "Ap,rOSLogo1"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/recoveryoslogo2@2x~mac-USBc.im4p",
+      "bytes": 146873,
+      "sha256": "016a103ae52f2e4dcef2a7827f2d9ac959f4919fe932c7434f50a62c00dba197",
+      "components": [
+        "Ap,rOSLogo2"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/sep-firmware.j713.RELEASE.im4p",
+      "bytes": 6063316,
+      "sha256": "c761ec30cd35eb4fe8d50d9556bb58e0117307cd58e17573f89a82458a3b7bd6",
+      "components": [
+        "RestoreSEP",
+        "SEP"
+      ]
+    },
+    {
+      "path": "Firmware/all_flash/sep-patches.j713.im4p",
+      "bytes": 21135,
+      "sha256": "55e0fd891b1a2434baacd09ff02377f8788934cf14f0ace8af7cf46462ff4e2a",
+      "components": [
+        "SepStage1"
+      ]
+    },
+    {
+      "path": "Firmware/ane/h16_ane_fw_leto_j7x.im4p",
+      "bytes": 1572889,
+      "sha256": "a7eead440099d8b6ef615225fd32785ef7154c67c56f2c1fd650ff353f54d4b0",
+      "components": [
+        "ANE"
+      ]
+    },
+    {
+      "path": "Firmware/ansf.t8132_ASP3.release.im4p",
+      "bytes": 1322865,
+      "sha256": "9ef10e23c1d964eb9de05ed23921a6ac29556842f567282dd1f3caf9025d4acc",
+      "components": [
+        "ANS"
+      ]
+    },
+    {
+      "path": "Firmware/ave/AppleAVE2FW_H16G.im4p",
+      "bytes": 2678961,
+      "sha256": "aa05040b60416a56da0d987061cf49dbf8f43775809f54d378de712f04bb1a9d",
+      "components": [
+        "AVE"
+      ]
+    },
+    {
+      "path": "Firmware/dcp/t8132dcp.im4p",
+      "bytes": 4051980,
+      "sha256": "c487d63174c3c606b2394532c46e0f165e2ef07f515fbb954c1eabb67ff963b8",
+      "components": [
+        "Ap,DCP2",
+        "DCP"
+      ]
+    },
+    {
+      "path": "Firmware/dcp/t8132dcp_restore.im4p",
+      "bytes": 4052521,
+      "sha256": "a6e42b7b524fdba8d45f0acca4adda3bd67efb6c4161024fcbc944ab89939dcb",
+      "components": [
+        "Ap,RestoreDCP2",
+        "RestoreDCP"
+      ]
+    },
+    {
+      "path": "Firmware/dfu/iBEC.j713.RELEASE.im4p",
+      "bytes": 1141145,
+      "sha256": "e6d90ca2900d3425c5683672e152fc26426927629eb1dd79bb28581556041a75",
+      "components": [
+        "iBEC"
+      ]
+    },
+    {
+      "path": "Firmware/dfu/iBSS.j713.RELEASE.im4p",
+      "bytes": 1350391,
+      "sha256": "2d31e974fdd1486a9e79701ac31ba937e1b917b44a1230121c207dc8b68f74cd",
+      "components": [
+        "iBSS"
+      ]
+    },
+    {
+      "path": "Firmware/embeddedaudioresources/image4/j713-attach-chime.im4p",
+      "bytes": 360481,
+      "sha256": "ce34359608d7ef1b6ddd5ae3364b936e8cb1febbcb6e9182e1d1ff3ee51e3090",
+      "components": [
+        "Ap,AudioPowerAttachChime"
+      ]
+    },
+    {
+      "path": "Firmware/embeddedaudioresources/image4/j713-boot-chime.im4p",
+      "bytes": 1114145,
+      "sha256": "a323b49ba6e0ac58f2ef22ada5915652852c43111692ff4b65b25654d67c5d9a",
+      "components": [
+        "Ap,AudioBootChime"
+      ]
+    },
+    {
+      "path": "Firmware/isp_bni/adc-eris-j129.im4p",
+      "bytes": 17645595,
+      "sha256": "71b95c62fa93b3af6a6b0605f15147de8ea296bd02de63c8d27bb48def44f221",
+      "components": [
+        "ISP"
+      ]
+    },
+    {
+      "path": "Firmware/pmc/t8132pmcfw.im4p",
+      "bytes": 24647,
+      "sha256": "1829dfa2d2724c589920549cee8141d1c66613c74934411e511b05ff9bbf173f",
+      "components": [
+        "Ap,ApplePMCFirmware"
+      ]
+    },
+    {
+      "path": "Firmware/pmp/t8132pmp.im4p",
+      "bytes": 675865,
+      "sha256": "e54fbeffce2c66694d64aabab7ff80063bba1e81eacf18570a72fcf86d2a7cb2",
+      "components": [
+        "PMP"
+      ]
+    },
+    {
+      "path": "Firmware/rans.t8132_ASP3.release.im4p",
+      "bytes": 1322880,
+      "sha256": "c2828254253a6c51229b160fc3ca7b1b90c05ef72c51675384c914fd050a24c6",
+      "components": [
+        "RestoreANS"
+      ]
+    },
+    {
+      "path": "Firmware/rt13m0/Release/ftab.bin",
+      "bytes": 550276,
+      "sha256": "502f17ed8a3e2f152369b7032e1e2a8648e14913c16b4f0f34c359bade3c200e",
+      "components": [
+        "Timer,RTKitOS,1",
+        "Timer,RTKitOS,2",
+        "Timer,RestoreRTKitOS,1",
+        "Timer,RestoreRTKitOS,2"
+      ]
+    },
+    {
+      "path": "Firmware/sptm.t8132.release.im4p",
+      "bytes": 196342,
+      "sha256": "91f6288dfda27dc319717d98c3dcfa9249bb1a2d4e5ed5c1d7c3705105a5bbf7",
+      "components": [
+        "Ap,RestoreSecurePageTableMonitor",
+        "Ap,SecurePageTableMonitor"
+      ]
+    },
+    {
+      "path": "Firmware/t8132ciofw.im4p",
+      "bytes": 182841,
+      "sha256": "6f8b4a7b1d7c89f8434453b067365c453d860280f3d85eff45f5a01dce662f03",
+      "components": [
+        "Ap,CIO",
+        "Ap,RestoreCIO"
+      ]
+    },
+    {
+      "path": "Firmware/t8132tmufw.im4p",
+      "bytes": 14587,
+      "sha256": "bba68e7835f81c9695ad36d7fcec56da7121b0c7cd915eec26bdb18630d239b4",
+      "components": [
+        "Ap,RestoreTMU",
+        "Ap,TMU"
+      ]
+    },
+    {
+      "path": "Firmware/txm.macosx.release.im4p",
+      "bytes": 168666,
+      "sha256": "fdcd8324fcdab7976a3ed4e319f7100120d18f23502ffa74cd74899e92a4a9ba",
+      "components": [
+        "Ap,RestoreTrustedExecutionMonitor",
+        "Ap,TrustedExecutionMonitor"
+      ]
+    },
+    {
+      "path": "Restore.plist",
+      "bytes": 22569,
+      "sha256": "668675d26d42f30d38dd76e4d33dc627cf45fcf8f8ac19c4d4f97d797f964542",
+      "components": [
+        "auxiliary"
+      ]
+    },
+    {
+      "path": "RestoreVersion.plist",
+      "bytes": 358,
+      "sha256": "f57101b933c16a430aea39b0e38d6a5423cf24d03b39bf30ca24d41602104698",
+      "components": [
+        "auxiliary"
+      ]
+    },
+    {
+      "path": "SystemVersion.plist",
+      "bytes": 603,
+      "sha256": "6151cb883e5b48d43a33d4d41956405a1cd502e0c8622319388d943e2cb804a1",
+      "components": [
+        "auxiliary"
+      ]
+    },
+    {
+      "path": "kernelcache.release.mac16g",
+      "bytes": 32061360,
+      "sha256": "d3539ca9402caad227bb1624b6f531c1db1baf8c590099c8768dd61e0928de39",
+      "components": [
+        "KernelCache",
+        "RestoreKernelCache"
+      ]
+    },
+    {
+      "path": "usr/standalone/bootcaches.plist",
+      "bytes": 22196,
+      "sha256": "a45beaac9bf43f9636b4140cf74c2a2f704513269e0e6d60e9df33ccc5430d39",
+      "components": [
+        "auxiliary"
+      ]
+    }
+  ]
+}

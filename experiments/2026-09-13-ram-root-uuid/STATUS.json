@@ -1,0 +1,15 @@
+{
+  "date": "2026-09-13",
+  "status": "uuid_alignment_insufficient_mount_phase_1_panic",
+  "guest_boot_uuid": "E93D361D-43AC-47A0-8DDA-A5D235BACC77",
+  "classification_adapter_applied": true,
+  "userspace_panic": "mount-phase-1 SIGABRT",
+  "console_error": "Failed to find AppleAPFSVolume matching E93D361D-43AC-47A0-8DDA-A5D235BACC77; ENOENT",
+  "evidence": "raw/guest.console-ring.bin, raw/guest.console-ring.txt, raw/guest.panic.json",
+  "conclusion": "changing boot UUID alone does not expose the md0 root as an AppleAPFSVolume IOKit service",
+  "next_candidate": "native di_root_ramfile entry called by IOFindBSDRoot; chosen boot-ramdmg-size is 8-byte OSData, boot-ramdmg-extents consists of 16-byte ranges; publishes IOMemoryDescriptor via di-root-ram-file",
+  "candidate_source": "raw/IOFindBSDRoot.txt, raw/di-root-ramfile.txt, raw/di-root-ramfile-tail.txt; pinned 25G83 disassembly",
+  "host_panic_decoder_patch": "Nix-built proxy accepts nonzero 32-bit panic options; m1n1.bin SHA unchanged at 779c9ac3c696210dcbd54c06f1353aa35f095cbd2a899a7da8a7ceacd5a6f2b4",
+  "native_iokit_candidate_hardware_tested": false,
+  "gui_verified": false
+}

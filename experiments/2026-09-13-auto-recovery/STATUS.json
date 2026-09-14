@@ -1,0 +1,36 @@
+{
+  "observed_utc": "2026-09-13T20:59:05Z",
+  "target": "Mac16,12 / J713 / t8132",
+  "stock_recovery_build": "25G83",
+  "os_environment": "ordinary recoveryOS / Not Paired",
+  "recovery_boot_mode": "ssv-seal-broken",
+  "reset_counter_boot_failure_count": 1,
+  "reset_counter_entry_reason": "Unknown Entry Reason",
+  "new_kernel_panic_report_found": false,
+  "stub_policy": {
+    "pairing_integrity": "Valid",
+    "security_mode": "Permissive",
+    "sip0": "7f",
+    "signed_system_volume_status": "Enabled",
+    "coih_unchanged": true,
+    "nsih_unchanged": true
+  },
+  "customkc_readback_sha256": "3c02fa38e54354cd12846c9623e90f955a7398588c06dd77686315941db41df1",
+  "embedded_raw_payload_sha256": "779c9ac3c696210dcbd54c06f1353aa35f095cbd2a899a7da8a7ceacd5a6f2b4",
+  "customkc_embedded_payload_offset": 74,
+  "original_data": {
+    "uuid": "B8663CA8-7F9F-4EF7-8947-75F71A14BDA9",
+    "locked": true,
+    "mounted": false,
+    "consumed_bytes": 86151307264,
+    "content_integrity_verified": false
+  },
+  "original_system_seal_status": "Broken",
+  "stub_system_snapshots": 0,
+  "recovery_basesystem_snapshots": 0,
+  "stock_recovery_bootargs": "-rootdmg-ramdisk root-dmg=file:///DE77783E-D9C0-4695-8BE1-EBE0D3015748/boot/E3EC22D725FED7937C03FEA6792DF0284ADD23F4530B4D4D975186E2C6B8E5CFDD0CC21A9A2907E2491C120AAAB3D1F8/usr/standalone/firmware/arm64eBaseSystem.dmg",
+  "boot_configuration_modified_this_inspection": false,
+  "reboot_requested_this_inspection": false,
+  "diagnosis": "Recovery reports SSV seal broken, but exact triggering boot path is not yet proven. CustomKC and policy remain intact; no evidence of erased original Data. BaseSystem has no snapshots, so synthesizing a snapshot name from the root digest is not a valid confirmed fix.",
+  "next_action": "Do not run kmutil or csrutil from this unpaired automatic Recovery. Use explicit startup-options selection for the experimental stub; if automatic Recovery repeats, collect that failure before further policy changes. Continue guest initial-root versus imageboot BaseSystem mount classification research."
+}

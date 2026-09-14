@@ -1,0 +1,17 @@
+{
+  "time_utc": "2026-09-13T17:47:52.176608+00:00",
+  "device": "/dev/ttyACM0",
+  "chip_id": 33074,
+  "timer_probe": {
+    "register": "VM_TMR_FIQ_ENA_EL2",
+    "read": true,
+    "same_value_write": false,
+    "value": "0xf",
+    "error": "Exception occurred"
+  },
+  "proxy_nop_after_probe": "ok",
+  "chosen_file": "experiments/2026-09-13-aligned-recovery/raw/timer-preflight.adt.txt",
+  "hv_init": "not attempted",
+  "guest_started": false,
+  "macos_boot_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "date": "2026-09-13",
+  "target": "Mac16,12 / J713 / t8132 / 32GB",
+  "preflight_verified": true,
+  "timer_same_value_write_verified": true,
+  "guest_declared_memory_bytes": 17179869184,
+  "guest_cpus_requested": 10,
+  "kernel_sha256": "f42ad6f51d130141095a94b4749d128d648f2be2ac0c291bf492ac1c64e5875d",
+  "ram_root_sha256": "bda0c53dfb35ceffe371c1708b2443b9d55f60a70bbcbbcf6470bade2b552e9a",
+  "applepmgr_complex_panic_reproduced": false,
+  "secondary_guest_start_requests": [0, 1, 2, 3, 4, 5, 7, 8, 9],
+  "all_guest_cpus_online_verified": false,
+  "xnu_execution_verified": true,
+  "panic": "The global payload bytes pointer is NULL @apfs_vfsops.c:2893",
+  "root_mount_success_verified": false,
+  "userspace_verified": false,
+  "graphical_interface_verified": false,
+  "guest_ssd_nodes_removed": ["ans"],
+  "original_data_mounted": false,
+  "interactive_guest_exit_verified": true,
+  "all_cpus_exited_log_verified": true,
+  "next_launcher_attempt": {
+    "root_hash_sha256": "577661fd264e5745736d4d31ff14598c5ad1f7360fad5092f79ac04b7562e8d9",
+    "guest_launched": false,
+    "failure": "bootstrap_port iodev_whoami serial write blocked; interrupted via PTY",
+    "root_auth_alignment_hardware_verified": false
+  },
+  "host_usb_reset_attempted": true,
+  "host_usb_reset_outcome": "device descriptor error -71, setup address not responding, disconnect; no successful recovery verified",
+  "next_action": "Physical restart into persistent m1n1. Investigate direct APFS BaseSystem root mount classification versus the normal macOS system-volume snapshot/auth path; official BaseSystem auth blob already matches the pinned root-hash payload."
+}

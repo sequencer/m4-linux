@@ -1,0 +1,10 @@
+{
+  "timer_probe": {
+    "register": "VM_TMR_FIQ_ENA_EL2",
+    "read": true,
+    "same_value_write": false,
+    "value": "0xf",
+    "error": "Exception occurred"
+  },
+  "guest_started": false
+}

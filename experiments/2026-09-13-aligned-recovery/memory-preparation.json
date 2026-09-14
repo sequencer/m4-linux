@@ -1,0 +1,25 @@
+{
+  "root_sha256": "bda0c53dfb35ceffe371c1708b2443b9d55f60a70bbcbbcf6470bade2b552e9a",
+  "layout": {
+    "physical_base": 1100023988224,
+    "memory_end": 1133076168704,
+    "kernel_end": 1100168478720,
+    "ramdisk_address": 1100168478720,
+    "ramdisk_size": 1574961152,
+    "reserved_end": 1101743439872,
+    "hle_aux_start": 1101743439872,
+    "hle_aux_end": 1101810548736
+  },
+  "bootargs_readback_verified": true,
+  "ramdisk_superblock_readback_verified": true,
+  "ssd_nodes_removed": [
+    "ans"
+  ],
+  "guest_started": false,
+  "macos_boot_verified": false,
+  "kernel_sha256": "f42ad6f51d130141095a94b4749d128d648f2be2ac0c291bf492ac1c64e5875d",
+  "adt_address": 1100040765440,
+  "bootargs_address": 1100168462336,
+  "adt_readback_verified": true,
+  "proxy_nop_after_preparation": "ok"
+}

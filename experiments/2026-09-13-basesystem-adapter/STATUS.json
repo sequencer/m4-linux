@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-13",
+  "status": "launchd_userspace_panic_mount_phase_1",
+  "guest_memory_gib": 16,
+  "guest_cpus": 10,
+  "adapter_applied_and_readback": true,
+  "original_apfs_panic_recurred": false,
+  "rootvnode": "0xfffffe3159b0cf88",
+  "userspace_evidence": "console ring: hello launchd; BaseSystem environment starting; mount and apfs_boot_util executed",
+  "panic": "userspace panic: boot task failure: mount-phase-1 - exited due to SIGABRT",
+  "cause": "lookup_boot_device failed to find AppleAPFSVolume matching inherited Bootstrap UUID DE77783E-D9C0-4695-8BE1-EBE0D3015748; ENOENT",
+  "ram_root_volume_uuid": "E93D361D-43AC-47A0-8DDA-A5D235BACC77; verified in live superblock at offset 0xf0",
+  "panic_decoder_note": "original decoder assumes format in x0; this panic_with_options frame uses options x0, caller x1, format x2, va_list x3; manually decoded successfully",
+  "console_evidence": "raw/console-ring.bin and raw/console-ring.txt; ring layout derived from pinned kernel disassembly",
+  "root_auth_blob_and_snapshot_changed": false,
+  "guest_ssd_controller_removed": true,
+  "gui_verified": false,
+  "next": "fresh guest with --ram-root-boot-uuid; only guest chosen boot UUID changes, no NVRAM or disk metadata change"
+}
