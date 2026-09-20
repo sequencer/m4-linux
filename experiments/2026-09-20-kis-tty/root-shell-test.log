@@ -1,0 +1,92 @@
+
+=== identity ===
+id; uname -a; tty; cat /proc/uptime; cat /proc/consoles; result=$?; printf '\n%s:%s\n' 'KIS_TEST_IDENTITY_END' "$res
+ult"
+uid=0 gid=0
+Linux (none) 7.1.13 #1-NixOS SMP PREEMPT Tue Jan  1 00:00:00 UTC 1980 aarch64 GNU/Linux
+/dev/ttyKIS0
+429.63 426.64
+ttyKIS0              -W- (EC     )  237:0
+tty0                 -WU (E   p  )    4:1
+
+KIS_TEST_IDENTITY_END:0
+m4# 
+
+=== memory_cpu ===
+head -n 8 /proc/meminfo; cat /sys/devices/system/cpu/online; cat /proc/loadavg; result=$?; printf '\n%s:%s\n' 'KIS_T
+EST_MEMORY_CPU_END' "$result"
+MemTotal:       32459744 kB
+MemFree:        32268576 kB
+MemAvailable:   32000544 kB
+Buffers:               0 kB
+Cached:            89792 kB
+SwapCached:            0 kB
+Active:            73888 kB
+Inactive:              0 kB
+0
+0.00 0.00 0.00 2/53 109
+
+KIS_TEST_MEMORY_CPU_END:0
+m4# 
+
+=== mounts ===
+cat /proc/mounts; cat /proc/partitions; ls -l /dev/ttyKIS0; cat /proc/tty/driver/apple-kis-tty; result=$?; printf '\
+n%s:%s\n' 'KIS_TEST_MOUNTS_END' "$result"
+rootfs / rootfs rw,size=16203008k,nr_inodes=1012688 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=16203008k,nr_inodes=1012688,mode=755 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,mode=600,ptmxmode=000 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+major minor  #blocks  name
+
+crw-------    1 0        0         237,   0 Jan  1 00:07 [1;35m/dev/ttyKIS0[m
+serinfo:1.0 driver revision:
+0: uart:Apple KIS DockChannel mmio:0x38812C000 irq:0 tx:72665 rx:66969 RTS|CTS|DTR|DSR|CD
+
+KIS_TEST_MOUNTS_END:0
+m4# 
+
+=== ram_io ===
+testdir=$(mktemp -d /tmp/kis-shell-test.XXXXXX) && printf 'KIS root shell RAM test\n' > "$testdir/input" && cp "$tes
+tdir/input" "$testdir/copy" && cmp "$testdir/input" "$testdir/copy" && dd if=/dev/zero of="$testdir/zeros" bs=1M count=1
+6 2>/dev/null && test "$(wc -c < "$testdir/zeros")" -eq 16777216 && echo RAM_IO_PASS; rm -f "$testdir/input" "$testdir/c
+opy" "$testdir/zeros"; rmdir "$testdir"; result=$?; printf '\n%s:%s\n' 'KIS_TEST_RAM_IO_END' "$result"
+RAM_IO_PASS
+
+KIS_TEST_RAM_IO_END:0
+m4# 
+
+=== process_pipe ===
+printf 'gamma\nalpha\nbeta\n' | sort; sh -c 'exit 7'; test $? -eq 7 && echo EXIT_STATUS_PASS; sleep 1 & child=$!; wa
+it "$child"; echo CHILD_WAIT_STATUS=$?; result=$?; printf '\n%s:%s\n' 'KIS_TEST_PROCESS_PIPE_END' "$result"
+alpha
+beta
+gamma
+EXIT_STATUS_PASS
+CHILD_WAIT_STATUS=0
+
+KIS_TEST_PROCESS_PIPE_END:0
+[1]+  Done                       sleep 1
+m4# 
+
+=== kernel_health ===
+lsmod; cat /proc/sys/kernel/printk; dmesg | grep -E 'BUG:|Oops:|Call trace:|Kernel panic|hung task|soft lockup|apple
+_kis|ttyKIS|bootconsole' | tail -20; result=$?; printf '\n%s:%s\n' 'KIS_TEST_KERNEL_HEALTH_END' "$result"
+
+apple_dart 65536 2 - Live 0xffffd217ea424000
+spmi_apple_controller 49152 0 - Live 0xffffd217ea40c000
+pinctrl_apple_gpio 65536 0 - Live 0xffffd217ea3ec000
+gpio_macsmc 49152 1 - Live 0xffffd217ea3d4000
+macsmc 49152 1 gpio_macsmc, Live 0xffffd217ea3bc000
+apple_kis_tty 49152 0 - Live 0xffffd217ea3a4000 (O)
+1	4	1	7
+[    0.000000] printk: legacy bootconsole [dockchannel0] enabled
+[    0.000000] Kernel command line: console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=4 panic=0 rdinit=/init
+[    0.318788] apple_kis_tty: loading out-of-tree module taints kernel.
+[    0.318966] apple-kis-tty: ttyKIS0 at MMIO 0x38812c000 (irq = 0, base_baud = 115200) is a Apple KIS DockChannel
+[    0.318973] printk: legacy console [ttyKIS0] enabled
+[    0.318974] printk: legacy bootconsole [dockchannel0] disabled
+
+KIS_TEST_KERNEL_HEALTH_END:0
+m4# 

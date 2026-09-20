@@ -1,0 +1,8 @@
+{
+  "time_utc": "2026-09-17T17:07:17.255687+00:00",
+  "device": "/dev/ttyACM0",
+  "serial_number": "M49KYH65C9",
+  "uart_nop": "ok",
+  "proxy_nop": "ok",
+  "linux_boot_verified": false
+}

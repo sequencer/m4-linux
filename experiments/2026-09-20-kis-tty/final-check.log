@@ -1,0 +1,28 @@
+stty rows 40 cols 120; stty size; printf 'KIS_CONSOLE_WRITE_OK\n' >/dev/cons
+ole; cat /proc/consoles; cat /proc/mounts; lsmod; dmesg | grep -E 'apple_kis|tty
+KIS|bootconsole|BUG:|Oops|Call trace'; echo FINAL_CHECK_DONE
+40 120
+KIS_CONSOLE_WRITE_OK
+ttyKIS0              -W- (EC     )  237:0
+tty0                 -WU (E   p  )    4:1
+rootfs / rootfs rw,size=16203008k,nr_inodes=1012688 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=16203008k,nr_inodes=1012688,mode=755 0 0
+proc /proc proc rw,relatime 0 0
+sysfs /sys sysfs rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,mode=600,ptmxmode=000 0 0
+debugfs /sys/kernel/debug debugfs rw,relatime 0 0
+
+apple_dart 65536 2 - Live 0xffffd217ea424000
+spmi_apple_controller 49152 0 - Live 0xffffd217ea40c000
+pinctrl_apple_gpio 65536 0 - Live 0xffffd217ea3ec000
+gpio_macsmc 49152 1 - Live 0xffffd217ea3d4000
+macsmc 49152 1 gpio_macsmc, Live 0xffffd217ea3bc000
+apple_kis_tty 49152 0 - Live 0xffffd217ea3a4000 (O)
+[    0.000000] printk: legacy bootconsole [dockchannel0] enabled
+[    0.000000] Kernel command line: console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=4 panic=0 rdinit=/init
+[    0.318788] apple_kis_tty: loading out-of-tree module taints kernel.
+[    0.318966] apple-kis-tty: ttyKIS0 at MMIO 0x38812c000 (irq = 0, base_baud = 115200) is a Apple KIS DockChannel
+[    0.318973] printk: legacy console [ttyKIS0] enabled
+[    0.318974] printk: legacy bootconsole [dockchannel0] disabled
+FINAL_CHECK_DONE
+m4# 

@@ -1,0 +1,12 @@
+BINARY_ROUNDTRIP 65536 bytes PASS seconds 0.73
+
+KIS_RAW_DONE
+m4# 
+printf '\nKIS_REOPEN_OK\n'; cat /proc/uptime; cat /proc/tty/driver/apple-kis
+-tty
+
+KIS_REOPEN_OK
+182.23 180.60
+serinfo:1.0 driver revision:
+0: uart:Apple KIS DockChannel mmio:0x38812C000 irq:0 tx:69234 rx:66165 RTS|CTS|DTR|DSR|CD
+m4# 

@@ -11,13 +11,14 @@ import zlib
 inspect_image = runpy.run_path(str(Path(__file__).with_name("inspect-recovery-input.py")))["inspect_image"]
 
 
-def make_gpt(root_size, isc_size):
+def make_gpt(root_size, isc_size, resources_size=0):
     alignment = 1024 * 1024
     if min(root_size, isc_size) <= 0 or root_size % 4096 or isc_size % 4096:
         raise ValueError("APFS partition sizes must be positive complete blocks")
     root_offset = alignment
     isc_offset = (root_offset + root_size + alignment - 1) // alignment * alignment
-    suffix_offset = isc_offset + isc_size
+    resources_offset = isc_offset + isc_size
+    suffix_offset = resources_offset + resources_size
     total_size = (suffix_offset + 33 * 512 + 4095) // 4096 * 4096
     last_lba = total_size // 512 - 1
     entries = bytearray(16384)
@@ -26,6 +27,9 @@ def make_gpt(root_size, isc_size):
         ("7c3457ef-0000-11aa-aa11-00306543ecac", root_offset, root_size, "Recovery BaseSystem"),
         ("69646961-6700-11aa-aa11-00306543ecac", isc_offset, isc_size, "RAM iBootSystemContainer"),
     ]
+    if resources_size:
+        partitions.append(("ebd0a0a2-b9e5-4433-87c0-68b6b72699c7", resources_offset,
+                           resources_size, "Guest resources"))
     for index, (type_guid, offset, size, name) in enumerate(partitions):
         entry = struct.pack("<16s16sQQQ72s", uuid.UUID(type_guid).bytes_le,
                             uuid.uuid5(namespace, name).bytes_le, offset // 512,
@@ -54,6 +58,7 @@ def make_gpt(root_size, isc_size):
     return bytes(prefix), bytes(suffix), {
         "root_offset": root_offset, "root_size": root_size,
         "isc_offset": isc_offset, "isc_size": isc_size,
+        "resources_offset": resources_offset, "resources_size": resources_size,
         "suffix_offset": suffix_offset, "total_size": total_size,
         "logical_sector_size": 512,
         "gap_size": isc_offset - root_offset - root_size,

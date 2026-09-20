@@ -1,0 +1,5 @@
+warning: Git tree '/home/sequencer/project/m4-linux' is dirty
+KIS_UART_NOP_OK
+KIS_PROXY_NOP_OK
+KIS_IODEV 1 EXPECTED 1
+DOCKCHANNEL_TX_FREE 0x800

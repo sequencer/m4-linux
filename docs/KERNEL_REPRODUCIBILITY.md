@@ -1,5 +1,7 @@
 # 内核资产与可复现边界
 
+> 以下输入表与旧 UUID 属于 2026-09-13 历史实验，不再作为当前默认输入。当前 25G83 资源及隔离要求见 CURRENT_BOOT_ASSETS.md；新内核与 Recovery 根盘由 prepare-current-assets.py 重建。旧 iSC 禁止用于 live guest，run-recovery-guest.py 已在入口封锁。下文“本次”“当前”仅指历史记录。
+
 ## 已保存的输入
 
 资产实际保存在本项目 experiments/2026-09-13-sptm-macos/raw/，不是仅存在 M4 或 /tmp。

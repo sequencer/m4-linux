@@ -1,0 +1,25 @@
+{
+  "kernel": "/nix/store/h88x9ybvi7z3vpd13rdr12sp3bn4317d-linux-m4-7.1.13/Image",
+  "dtb": "/nix/store/h88x9ybvi7z3vpd13rdr12sp3bn4317d-linux-m4-7.1.13/dtbs/apple/t8132-j713.dtb",
+  "initrd": "/nix/store/r5rsanzaspj82sm789mklycgxc6px3ll-initrd/initrd",
+  "bootargs": "console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=4 panic=0 rdinit=/init",
+  "linux_boot_verified": true,
+  "stage": "kis_tty_shell_verified",
+  "validation": {
+    "tty": "/dev/ttyKIS0",
+    "root_shell": true,
+    "ctrl_c_exit_status": 130,
+    "ctrl_z_and_fg": true,
+    "binary_roundtrip_bytes": 65536,
+    "binary_roundtrip_equal": true,
+    "host_kisd_restart_without_target_reboot": true,
+    "shell_respawn": true,
+    "console_write": true,
+    "terminal_size": [40, 120],
+    "runtime_console_loglevel": 1,
+    "evidence": ["boot-console.log", "roundtrip.log", "reconnect.log", "final-check.log"]
+  },
+  "kernel_address": 1099786354688,
+  "initrd_address": 1099767611392,
+  "dtb_input_address": 1099767497280
+}

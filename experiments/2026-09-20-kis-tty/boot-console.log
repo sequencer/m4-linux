@@ -1,0 +1,243 @@
+warning: Git tree '/home/sequencer/project/m4-linux' is dirty
+TTY> Heap limit: 0x1000f3f4000 (128 MiB)
+uploading
+preparing_device_tree
+TTY> isp: Unsupported SoC
+TTY> FDT: bootargs = 'console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=4 panic=0 rdinit=/init'
+TTY> FDT: initrd at 0x1000f420000 size 0x1167fa4
+TTY> display: Hiding notch, 2560x1664 -> 2560x1600 (+64, 16:10)
+TTY> FDT: framebuffer@107d548c000 base 0x107d548c000 size 0xfa0000
+TTY> SEP: couldn't get enough random bytes for KASLR seed
+TTY> ADT: 256 bytes of random seed available
+TTY> FDT: KASLR seed initialized
+TTY> FDT: Passing 256 bytes of random seed
+TTY> FDT: reporting device serial number: M49KYH65C9
+TTY> FDT: CPU 0 is not alive, disabling...
+TTY> FDT: CPU 1 is not alive, disabling...
+TTY> FDT: CPU 2 is not alive, disabling...
+TTY> FDT: CPU 3 is not alive, disabling...
+TTY> FDT: CPU 4 is not alive, disabling...
+TTY> FDT: CPU 5 is not alive, disabling...
+TTY> FDT: CPU 7 is not alive, disabling...
+TTY> FDT: CPU 8 is not alive, disabling...
+TTY> FDT: CPU 9 is not alive, disabling...
+TTY> FDT: Pruned 6/6 CPU references in [AIC]/affinities/e-core-pmu-affinity
+TTY> FDT: Pruned 3/4 CPU references in [AIC]/affinities/p-core-pmu-affinity
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core0
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core1
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core2
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core3
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core4
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core5
+TTY> FDT: Pruning /cpus/cpu-map/cluster0
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core1
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core2
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core3
+TTY> FDT: Unable to find alias usb4_0_rc
+TTY> FDT: Unable to find alias usb4_0_pcie_adapter
+TTY> FDT: Unable to find alias usb4_0_nhi
+TTY> FDT: Unable to find alias usb4_0_nhi
+TTY> FDT: Unable to find alias usb4_1_rc
+TTY> FDT: Unable to find alias usb4_1_pcie_adapter
+TTY> FDT: Unable to find alias usb4_1_nhi
+TTY> FDT: Unable to find alias usb4_1_nhi
+TTY> FDT: Unable to find alias usb4_0_pcie
+TTY> FDT: Unable to find alias usb4_1_pcie
+TTY> FDT: unknown compatible, skip display reserved-memory setup
+TTY> FDT: GPU: Initializing GPU info
+TTY> ADT: GPU: unsupported chip!
+TTY> FDT: sep alias not found in devtree
+TTY> FDT: pmp not found in devtree
+TTY> ADT: nvram partition not found
+TTY> FDT: Disabling missing device /soc/usb@412280000
+TTY> FDT: Disabling missing device /soc/usb@41a280000
+TTY> FDT: Disabling secondary device /soc/iommu@412f00000 (122)
+TTY> FDT: Disabling secondary device /soc/iommu@412f80000 (123)
+TTY> FDT: Disabling secondary device /soc/phy@413000000 (125)
+TTY> FDT: Disabling secondary device /soc/iommu@41af00000 (126)
+TTY> FDT: Disabling secondary device /soc/iommu@41af80000 (127)
+TTY> FDT: Disabling secondary device /soc/phy@41b000000 (129)
+TTY> FDT: 'isp' not found
+TTY> FDT: 'isp' not found
+TTY> FDT: Reserving CTRR range 0x100058c8000..0x100058d4000
+TTY> FDT: DRAM at 0x10000000000 size 0x800000000
+TTY> FDT: Usable memory is 0x10002770000..0x107d099c000 (0x7ce22c000)
+TTY> FDT: Adding reserved-memory node flash@107d09a0000 (107d09a0000..107d09a4000) to RAM map
+TTY> FDT prepared at 0x100073f4000
+uploading_kernel
+enabling_ane_power
+requesting_native_linux_handoff
+TTY> mca-switch node not found!
+TTY> pcie: Initializing t8132 PCIe controller
+TTY> pcie: ADT uses 8 reg entries per port
+TTY> pcie: No common tunables
+TTY> pcie: Initializing port 0
+TTY> pcie: Port 0 max speed = 2
+TTY> pcie: Initialized controller 0
+TTY> pcie: Error getting node /arm-io/apcie0
+TTY> pcie: Error getting node /arm-io/apcie-ge0
+TTY> pcie: Error getting node /arm-io/apcie-ge1
+TTY> dapf: Initialized /arm-io/dart-aop
+TTY> dapf: Initialized /arm-io/dart-mtp
+TTY> dapf: Initialized /arm-io/dart-pmp
+TTY> dapf: Initialized /arm-io/dart-dcp
+TTY> dapf: Initialized /arm-io/dart-dcpext0
+TTY> dapf: Initialized /arm-io/dart-isp
+TTY> dapf: Initialized /arm-io/dart-ane
+TTY> dapf: Error getting ADT node /arm-io/dart-ave dapf-instance property.
+TTY> Setting SMP mode to WFE...
+TTY> Preparing to boot kernel at 0x10010600000 with fdt at 0x100073f4000
+handoff_command_returned_waiting_for_console
+--- TTY mode | Quit: CTRL+] | Menu: CTRL+T ---
+Preparing to run next stage at 0x10010600000...
+USB0: shutdown
+USB1: shutdown
+MMU: shutting down...
+MMU: shutdown successful, clearing caches
+Vectoring to next stage...
+[    0.000000] Booting Linux on physical CPU 0x0000010100 [0x611f0531]
+[    0.000000] Linux version 7.1.13 (nixbld@localhost) (gcc (GCC) 15.3.0, GNU ld (GNU Binutils) 2.46) #1-NixOS SMP PREEMPT Tue Jan  1 00:00:00 UTC 1980
+[    0.000000] KASLR enabled
+[    0.000000] random: crng init done
+[    0.000000] Machine model: Apple MacBook Air (13-inch, M4, 2025)
+[    0.000000] earlycon: dockchannel0 at MMIO 0x000000038812c000 (options '')
+[    0.000000] printk: legacy bootconsole [dockchannel0] enabled
+[    0.063340] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.063713] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.064164] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.064536] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.090745] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.091145] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.091478] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.091769] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.097458] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.097749] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.098056] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.098347] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.319121] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.319533] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.319952] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.320350] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.337794] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.338191] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.338611] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.339007] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.348206] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.348611] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.349022] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.349320] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.350548] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.350950] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.351309] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.351601] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.353461] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.353863] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.354275] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.354679] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.356093] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.356490] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.356908] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.357278] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.360085] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.360484] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.360905] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.361243] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.364101] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.364496] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.364913] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.365310] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+m4# [   10.481410] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.485855] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.486296] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.486726] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+printf '\nKIS_SHELL_OK\n'; uname -a; tty; id; cat /proc/consoles; cat /proc/
+uptime; cat /proc/cmdline
+
+KIS_SHELL_OK
+Linux (none) 7.1.13 #1-NixOS SMP PREEMPT Tue Jan  1 00:00:00 UTC 1980 aarch64 GNU/Linux
+/dev/ttyKIS0
+uid=0 gid=0
+ttyKIS0              -W- (EC     )  237:0
+tty0                 -WU (E   p  )    4:1
+26.73 26.22
+console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=4 panic=0 rdinit=/init
+m4# dmesg -n 1; sleep 60
+^C
+m4# echo CTRL_C_STATUS=$?; sleep 60 & jobs; kill %1; wait %1; echo JOB_CONTROL_O
+K; dmesg | grep -E 'ttyKIS|bootconsole|apple_kis|BUG:|Oops|Call trace' | tail -1
+2
+CTRL_C_STATUS=130
+[1]+  Running                    sleep 60
+^C
+m4# jobs; ps; echo SHELL_LIVE
+[1]+  Running                    sleep 60
+PID   USER     TIME  COMMAND
+    1 0         0:00 /bin/busybox init
+    2 0         0:00 [kthreadd]
+    3 0         0:00 [pool_workqueue_]
+    4 0         0:00 [kworker/R-rcu_g]
+    5 0         0:00 [kworker/R-sync_]
+    6 0         0:00 [kworker/R-kvfre]
+    7 0         0:00 [kworker/R-slub_]
+    8 0         0:00 [kworker/R-netns]
+    9 0         0:00 [kworker/0:0-eve]
+   10 0         0:00 [kworker/0:0H]
+   11 0         0:00 [kworker/0:1-dev]
+   12 0         0:00 [kworker/u4:0-ev]
+   13 0         0:00 [kworker/R-mm_pe]
+   14 0         0:00 [kworker/u4:1-pm]
+   15 0         0:00 [ksoftirqd/0]
+   16 0         0:00 [rcu_sched]
+   17 0         0:00 [rcu_exp_par_gp_]
+   18 0         0:00 [rcu_exp_gp_kthr]
+   19 0         0:00 [migration/0]
+   20 0         0:00 [cpuhp/0]
+   21 0         0:00 [kdevtmpfs]
+   22 0         0:00 [kworker/R-inet_]
+   23 0         0:00 [rcu_tasks_kthre]
+   24 0         0:00 [rcu_tasks_rude_]
+   25 0         0:00 [kauditd]
+   26 0         0:00 [khungtaskd]
+   27 0         0:00 [oom_reaper]
+   28 0         0:00 [kworker/R-write]
+   29 0         0:00 [kcompactd0]
+   30 0         0:00 [ksmd]
+   31 0         0:00 [khugepaged]
+   32 0         0:00 [kworker/R-kbloc]
+   33 0         0:00 [kworker/R-blkcg]
+   34 0         0:00 [kworker/R-kinte]
+   35 0         0:00 [kworker/R-tpm_d]
+   36 0         0:00 [kworker/u4:2-pm]
+   37 0         0:00 [kworker/R-edac-]
+   38 0         0:00 [kworker/R-devfr]
+   39 0         0:00 [watchdogd]
+   40 0         0:00 [kworker/R-quota]
+   41 0         0:00 [kworker/u4:3-pm]
+   42 0         0:00 [kswapd0]
+   43 0         0:00 [kdamond.0]
+   44 0         0:00 [kworker/R-kthro]
+   45 0         0:00 [kworker/R-acpi_]
+   46 0         0:00 [kworker/R-mld]
+   47 0         0:00 [kworker/R-ipv6_]
+   48 0         0:00 [kworker/R-kstrp]
+   49 0         0:00 [kworker/u5:0-rt]
+   61 0         0:00 [kworker/R-rtkit]
+   62 0         0:00 [kworker/u5:1-rt]
+   65 0         0:00 [kworker/0:2-eve]
+   66 0         0:00 [kworker/0:3-eve]
+   67 0         0:00 [kworker/0:4-eve]
+   68 0         0:00 [kworker/0:5]
+   69 0         0:00 [kworker/0:6-rcu]
+   71 0         0:00 /bin/sh -i
+   80 0         0:00 sleep 60
+   81 0         0:00 ps
+SHELL_LIVE
+m4# kill -KILL 80; wait 80; echo WAIT_STATUS=$?; sleep 60
+WAIT_STATUS=0
+^Z[2]+  Stopped                    sleep 60
+[1]-  Done                       sleep 60
+m4# jobs; fg
+[2]+  Stopped                    sleep 60
+sleep 60
+^C
+m4# --- Exit TTY mode ---

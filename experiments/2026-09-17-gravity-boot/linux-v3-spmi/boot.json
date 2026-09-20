@@ -1,0 +1,11 @@
+{
+  "kernel": "/nix/store/h88x9ybvi7z3vpd13rdr12sp3bn4317d-linux-m4-7.1.13/Image",
+  "dtb": "/nix/store/h88x9ybvi7z3vpd13rdr12sp3bn4317d-linux-m4-7.1.13/dtbs/apple/t8132-j713.dtb",
+  "initrd": "/nix/store/i7h6c229960ls06baq4ld3q1z21j2713-initrd/initrd",
+  "bootargs": "console=tty0 earlycon maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused loglevel=8 ignore_loglevel panic=0 rdinit=/init m4.usb_port=1",
+  "linux_boot_verified": false,
+  "stage": "handoff_command_returned_waiting_for_console",
+  "kernel_address": 1099792646144,
+  "initrd_address": 1099772002304,
+  "dtb_input_address": 1099771904576
+}

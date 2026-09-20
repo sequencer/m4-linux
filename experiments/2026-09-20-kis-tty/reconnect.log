@@ -1,0 +1,16 @@
+printf '\nKIS_DAEMON_RECONNECT_OK\n'; cat /proc/uptime; tty; echo SHELL_PID=
+$$; cat /proc/sys/kernel/printk
+
+KIS_DAEMON_RECONNECT_OK
+236.78 234.85
+/dev/ttyKIS0
+SHELL_PID=71
+1	4	1	7
+m4# 
+exit
+m4# 
+echo SHELL_RESPAWN_PID=$$; tty; cat /proc/uptime
+SHELL_RESPAWN_PID=92
+/dev/ttyKIS0
+240.18 238.24
+m4# 

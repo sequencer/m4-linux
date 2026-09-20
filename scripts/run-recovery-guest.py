@@ -53,6 +53,7 @@ def main():
     parser.add_argument("ramdisk", type=Path)
     parser.add_argument("--root-manifest", type=Path, required=True)
     parser.add_argument("--kernel-sha256", required=True)
+    parser.add_argument("--skip-file-hashes", action="store_true")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--device", default="/dev/ttyACM0")
     parser.add_argument("--prepare-only", action="store_true")
@@ -66,6 +67,8 @@ def main():
     parser.add_argument("--iokit-ram-root", action="store_true")
     parser.add_argument("--isc-image", type=Path)
     parser.add_argument("--isc-manifest", type=Path)
+    parser.add_argument("--resources-image", type=Path)
+    parser.add_argument("--extra-bootargs", default="")
     parser.add_argument("--console-log", type=Path)
     parser.add_argument("--graphics", action="store_true")
     parser.add_argument("--proxyclient", type=Path, default=Path(__file__).resolve().parent.parent / "results/m1n1-resource-tools/share/m1n1-sptm/proxyclient")
@@ -80,9 +83,12 @@ def main():
         parser.error("IOKit RAM root experiment requires aligned RAM root boot UUID")
     if bool(args.isc_image) != bool(args.isc_manifest) or (args.isc_image and not args.iokit_ram_root):
         parser.error("iSC image and manifest require the native IOKit RAM root experiment")
+    if args.resources_image and not args.isc_image:
+        parser.error("resources image requires the RAM GPT/iSC layout")
     root_auth = None
     if args.recovery_root_hash:
-        root_auth = read_root_auth(args.recovery_root_hash, args.recovery_root_hash_sha256)
+        root_auth = read_root_auth(args.recovery_root_hash, args.recovery_root_hash_sha256,
+                                   verify_hash=not args.skip_file_hashes)
     if not args.prepare_only and not sys.stdin.isatty():
         parser.error("guest launch requires interactive stdin; run with a PTY to preserve panic-shell control, or use --prepare-only")
     if args.output.exists():
@@ -94,12 +100,12 @@ def main():
         sys.stderr = ConsoleLog(sys.stderr, log)
     metadata = json.loads(args.root_manifest.read_text())
     with args.kernel.open("rb") as kernel:
-        kernel_digest = hashlib.file_digest(kernel, "sha256").hexdigest()
+        kernel_digest = args.kernel_sha256 if args.skip_file_hashes else hashlib.file_digest(kernel, "sha256").hexdigest()
     if kernel_digest != args.kernel_sha256:
         parser.error("kernel SHA-256 mismatch")
     size = args.ramdisk.stat().st_size
     with args.ramdisk.open("rb") as image:
-        digest = hashlib.file_digest(image, "sha256").hexdigest()
+        digest = metadata["root_sha256"] if args.skip_file_hashes else hashlib.file_digest(image, "sha256").hexdigest()
         image.seek(32)
         superblock_header = image.read(16)
         magic = superblock_header[:4]
@@ -119,11 +125,13 @@ def main():
                 or not 64 * 1024 ** 2 <= isc_size <= 1024 ** 3):
             parser.error("iSC source identity or size mismatch")
         helpers = runpy.run_path(str(Path(__file__).with_name("prepare-ram-isc.py")))
-        helpers["check_source"](args.isc_image, isc_manifest["sha256"])
-        prefix, suffix, media_layout = helpers["make_gpt"](size, isc_size)
+        if not args.skip_file_hashes:
+            helpers["check_source"](args.isc_image, isc_manifest["sha256"])
+        resources_size = args.resources_image.stat().st_size if args.resources_image else 0
+        prefix, suffix, media_layout = helpers["make_gpt"](size, isc_size, resources_size)
         if media_layout["gap_size"]:
             parser.error("scatter image currently requires contiguous partition boundaries")
-        isc_media = (prefix, suffix, media_layout, isc_manifest["sha256"])
+        isc_media = (prefix, suffix, media_layout, isc_manifest.get("sha256"))
     args.output.parent.mkdir(parents=True, exist_ok=True)
     sys.path.insert(0, str(args.proxyclient))
     from m1n1.proxy import M1N1Proxy, UartInterface
@@ -195,6 +203,8 @@ def main():
     guest_bootargs = f"rd=md0 -nobsdmgroot cpus={args.guest_cpus} wdt=-1 sprr_tpro=0 sprr_tpro_pagers=0 wfi=0 cluster_power=0 processor_exit=0 vm_compressor=0 -v msgbuf=1048576 amfi_get_out_of_my_way=1"
     if args.graphics:
         guest_bootargs = " ".join(argument for argument in guest_bootargs.split() if argument != "-v")
+    if args.extra_bootargs:
+        guest_bootargs += " " + args.extra_bootargs
     hypervisor.set_bootargs(guest_bootargs)
     with args.kernel.open("rb") as kernel:
         hypervisor.load_macho(kernel)
@@ -285,9 +295,13 @@ def main():
             prefix, suffix, media_layout, isc_digest = isc_media
             prefix_address = address + size
             isc_address = prefix_address + len(prefix)
-            suffix_address = isc_address + media_layout["isc_size"]
+            resources_address = isc_address + media_layout["isc_size"]
+            suffix_address = resources_address + media_layout["resources_size"]
             extents = [(prefix_address, len(prefix)), (address, size),
-                       (isc_address, media_layout["isc_size"]), (suffix_address, len(suffix))]
+                       (isc_address, media_layout["isc_size"])]
+            if args.resources_image:
+                extents.append((resources_address, media_layout["resources_size"]))
+            extents.append((suffix_address, len(suffix)))
             if suffix_address + len(suffix) > layout["reserved_end"]:
                 raise ValueError("scatter image exceeds reserved guest memory")
         image_size = sum(length for start, length in extents)
@@ -325,6 +339,13 @@ def main():
             expected = image.read(4096)
         if interface.readmem(isc_address, len(expected)) != expected:
             raise ValueError("RAM iSC superblock readback mismatch")
+        if args.resources_image:
+            with args.resources_image.open("rb") as image:
+                offset = 0
+                while chunk := image.read(16 * 1024 * 1024):
+                    utils.compressed_writemem(resources_address + offset, chunk)
+                    offset += len(chunk)
+                    print(f"Guest resources uploaded: {offset}/{media_layout['resources_size']}", flush=True)
         hypervisor.add_tracer(irange(prefix_address, reservation_size - size), "ISC-RAM-MEDIA", TraceMode.OFF)
     hypervisor.adt["/chosen/memory-map"].RAMDisk = struct.pack("<QQ", address, size)
     hypervisor.add_tracer(irange(address, size), "RECOVERY-RAMDISK", TraceMode.OFF)
@@ -344,6 +365,7 @@ def main():
         raise ValueError("guest ADT readback mismatch")
     args.output.with_suffix(".adt.bin").write_bytes(adt)
     report = {"root_sha256": digest, "kernel_sha256": kernel_digest, "layout": layout, "bootargs_readback_verified": True,
+              "file_hashes_verified_this_run": not args.skip_file_hashes,
               "original_memory_size": original_memory_size, "guest_memory_size": hypervisor.tba.mem_size,
               "ramdisk_superblock_readback_verified": True, "ssd_nodes_removed": removed,
               "adt_address": hypervisor.adt_base, "bootargs_address": bootargs_address,
@@ -351,6 +373,7 @@ def main():
               "guest_start_attempted": False, "guest_started": False, "macos_boot_verified": False,
               "guest_cpus_requested": args.guest_cpus, "guest_bootargs": guest_bootargs,
               "graphics_requested": args.graphics, "boot_video_display": actual.video.display,
+              "resources_image": str(args.resources_image) if args.resources_image else None,
               "root_authentication": root_auth_report, "apfs_inspection": apfs_inspection,
               "boot_uuid_alignment": boot_uuid_report, "iokit_ram_root": iokit_ram_root}
     args.output.write_text(json.dumps(report, indent=2) + "\n")

@@ -1,0 +1,12 @@
+{
+  "kernel": "/nix/store/h88x9ybvi7z3vpd13rdr12sp3bn4317d-linux-m4-7.1.13/Image",
+  "dtb": "/nix/store/h88x9ybvi7z3vpd13rdr12sp3bn4317d-linux-m4-7.1.13/dtbs/apple/t8132-j713.dtb",
+  "initrd": "/nix/store/hpnilrms791d9nih7c6zqm28g62983d9-initrd/initrd",
+  "bootargs": "console=tty0 earlycon=dockchannel,0x38812c000 keep_bootcon maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused loglevel=8 ignore_loglevel panic=0 rdinit=/init m4.usb_port=1",
+  "linux_boot_verified": true,
+  "stage": "linux_init_observed_via_kis",
+  "evidence": "linux-console.log: Linux 7.1.13, dockchannel0 enabled, Run /init as init process, subsequent driver logs through 10.508161 seconds",
+  "kernel_address": 1099801034752,
+  "initrd_address": 1099781505024,
+  "dtb_input_address": 1099781390912
+}

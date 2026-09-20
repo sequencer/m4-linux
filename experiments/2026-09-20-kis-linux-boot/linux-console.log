@@ -1,0 +1,521 @@
+warning: Git tree '/home/sequencer/project/m4-linux' is dirty
+TTY> Heap limit: 0x10010134000 (128 MiB)
+uploading
+........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+preparing_device_tree
+TTY> isp: Unsupported SoC
+TTY> FDT: bootargs = 'console=tty0 earlycon=dockchannel,0x38812c000 keep_bootcon maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused loglevel=8 ignore_loglevel panic=0 rdinit=/init m4.usb_port=1'
+TTY> FDT: initrd at 0x10010160000 size 0x122f2ce
+TTY> display: Hiding notch, 2560x1664 -> 2560x1600 (+64, 16:10)
+TTY> FDT: framebuffer@107d548c000 base 0x107d548c000 size 0xfa0000
+TTY> SEP: couldn't get enough random bytes for KASLR seed
+TTY> ADT: 256 bytes of random seed available
+TTY> FDT: KASLR seed initialized
+TTY> FDT: Passing 256 bytes of random seed
+TTY> FDT: reporting device serial number: M49KYH65C9
+TTY> FDT: CPU 0 is not alive, disabling...
+TTY> FDT: CPU 1 is not alive, disabling...
+TTY> FDT: CPU 2 is not alive, disabling...
+TTY> FDT: CPU 3 is not alive, disabling...
+TTY> FDT: CPU 4 is not alive, disabling...
+TTY> FDT: CPU 5 is not alive, disabling...
+TTY> FDT: CPU 7 is not alive, disabling...
+TTY> FDT: CPU 8 is not alive, disabling...
+TTY> FDT: CPU 9 is not alive, disabling...
+TTY> FDT: Pruned 6/6 CPU references in [AIC]/affinities/e-core-pmu-affinity
+TTY> FDT: Pruned 3/4 CPU references in [AIC]/affinities/p-core-pmu-affinity
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core0
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core1
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core2
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core3
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core4
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core5
+TTY> FDT: Pruning /cpus/cpu-map/cluster0
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core1
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core2
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core3
+TTY> FDT: Unable to find alias usb4_0_rc
+TTY> FDT: Unable to find alias usb4_0_pcie_adapter
+TTY> FDT: Unable to find alias usb4_0_nhi
+TTY> FDT: Unable to find alias usb4_0_nhi
+TTY> FDT: Unable to find alias usb4_1_rc
+TTY> FDT: Unable to find alias usb4_1_pcie_adapter
+TTY> FDT: Unable to find alias usb4_1_nhi
+TTY> FDT: Unable to find alias usb4_1_nhi
+TTY> FDT: Unable to find alias usb4_0_pcie
+TTY> FDT: Unable to find alias usb4_1_pcie
+TTY> FDT: unknown compatible, skip display reserved-memory setup
+TTY> FDT: GPU: Initializing GPU info
+TTY> ADT: GPU: unsupported chip!
+TTY> FDT: sep alias not found in devtree
+TTY> FDT: pmp not found in devtree
+TTY> ADT: nvram partition not found
+TTY> FDT: Disabling missing device /soc/usb@412280000
+TTY> FDT: Disabling missing device /soc/usb@41a280000
+TTY> FDT: Disabling secondary device /soc/iommu@412f00000 (122)
+TTY> FDT: Disabling secondary device /soc/iommu@412f80000 (123)
+TTY> FDT: Disabling secondary device /soc/phy@413000000 (125)
+TTY> FDT: Disabling secondary device /soc/iommu@41af00000 (126)
+TTY> FDT: Disabling secondary device /soc/iommu@41af80000 (127)
+TTY> FDT: Disabling secondary device /soc/phy@41b000000 (129)
+TTY> FDT: 'isp' not found
+TTY> FDT: 'isp' not found
+TTY> FDT: Reserving CTRR range 0x10006608000..0x10006614000
+TTY> FDT: DRAM at 0x10000000000 size 0x800000000
+TTY> FDT: Usable memory is 0x10002770000..0x107d099c000 (0x7ce22c000)
+TTY> FDT: Adding reserved-memory node flash@107d09a0000 (107d09a0000..107d09a4000) to RAM map
+TTY> FDT prepared at 0x10008134000
+uploading_kernel
+...........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+enabling_ane_power
+requesting_native_linux_handoff
+TTY> mca-switch node not found!
+TTY> pcie: Initializing t8132 PCIe controller
+TTY> pcie: ADT uses 8 reg entries per port
+TTY> pcie: No common tunables
+TTY> pcie: Initializing port 0
+TTY> pcie: Port 0 max speed = 2
+TTY> pcie: Initialized controller 0
+TTY> pcie: Error getting node /arm-io/apcie0
+TTY> pcie: Error getting node /arm-io/apcie-ge0
+TTY> pcie: Error getting node /arm-io/apcie-ge1
+TTY> dapf: Initialized /arm-io/dart-aop
+TTY> dapf: Initialized /arm-io/dart-mtp
+TTY> dapf: Initialized /arm-io/dart-pmp
+TTY> dapf: Initialized /arm-io/dart-dcp
+TTY> dapf: Initialized /arm-io/dart-dcpext0
+TTY> dapf: Initialized /arm-io/dart-isp
+TTY> dapf: Initialized /arm-io/dart-ane
+TTY> dapf: Error getting ADT node /arm-io/dart-ave dapf-instance property.
+TTY> Setting SMP mode to WFE...
+TTY> Preparing to boot kernel at 0x10011400000 with fdt at 0x10008134000
+handoff_command_returned_waiting_for_console
+--- TTY mode | Quit: CTRL+] | Menu: CTRL+T ---
+Preparing to run next stage at 0x10011400000...
+USB0: shutdown
+USB1: shutdown
+MMU: shutting down...
+MMU: shutdown successful, clearing caches
+Vectoring to next stage...
+[    0.000000] Booting Linux on physical CPU 0x0000010100 [0x611f0531]
+[    0.000000] Linux version 7.1.13 (nixbld@localhost) (gcc (GCC) 15.3.0, GNU ld (GNU Binutils) 2.46) #1-NixOS SMP PREEMPT Tue Jan  1 00:00:00 UTC 1980
+[    0.000000] KASLR enabled
+[    0.000000] random: crng init done
+[    0.000000] Machine model: Apple MacBook Air (13-inch, M4, 2025)
+[    0.000000] earlycon: dockchannel0 at MMIO 0x000000038812c000 (options '')
+[    0.000000] printk: legacy bootconsole [dockchannel0] enabled
+[    0.000000] printk: debug: skip boot console de-registration.
+[    0.000000] printk: debug: ignoring loglevel setting.
+[    0.000000] efi: UEFI not found.
+[    0.000000] OF: reserved mem: 0x00000107d09a0000..0x00000107d09a3fff (16 KiB) map non-reusable flash@107d09a0000
+[    0.000000] OF: reserved mem: 0x0000010005cf4000..0x0000010005d67fff (464 KiB) map non-reusable flash@10005cf4000
+[    0.000000] NUMA: Faking a node at [mem 0x0000010002770000-0x00000107d09a3fff]
+[    0.000000] NODE_DATA(0) allocated [mem 0x107cf1a0b40-0x107cf1a447f]
+[    0.000000] cma: Reserved 32 MiB at 0x0000010003000000
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000010002770000-0x00000107d09a3fff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000]   Device   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000010002770000-0x00000107d099bfff]
+[    0.000000]   node   0: [mem 0x00000107d09a0000-0x00000107d09a3fff]
+[    0.000000] Initmem setup node 0 [mem 0x0000010002770000-0x00000107d09a3fff]
+[    0.000000] On node 0, zone DMA: 2524 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 1 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 7575 pages in unavailable ranges
+[    0.000000] percpu: Embedded 19 pages/cpu s178072 r8192 d125032 u311296
+[    0.000000] pcpu-alloc: s178072 r8192 d125032 u311296 alloc=19*16384
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: SYS_ID_AA64ISAR2_EL1[3:0]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64PFR1_EL1[27:24]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[63:63]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[60:60]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[59:56]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[55:52]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[48:48]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[47:44]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[43:43]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[42:42]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[41:41]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[40:40]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[39:36]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[35:35]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[34:34]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[33:33]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[32:32]: forced to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[30:30]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[29:29]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[28:28]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[25:25]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[24:24]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[23:23]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[16:16]: already set to 0
+[    0.000000] CPU features: SYS_ID_AA64SMFR0_EL1[0:0]: already set to 0
+[    0.000000] CPU features: detected: Address authentication (IMP DEF algorithm)
+[    0.000000] CPU features: detected: HCRX_EL2 register
+[    0.000000] CPU features: CPU advertises Apple TSO but it is broken, ignoring
+[    0.000000] CPU features: detected: Virtualization Host Extensions
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: console=tty0 earlycon=dockchannel,0x38812c000 keep_bootcon maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused loglevel=8 ignore_loglevel panic=0 rdinit=/init m4.usb_port=1
+[    0.000000] printk: log buffer data + meta data: 131072 + 557056 = 688128 bytes
+[    0.000000] Dentry cache hash table entries: 4194304 (order: 11, 33554432 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 2097152 (order: 10, 16777216 bytes, linear)
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 31MB
+[    0.000000] software IO TLB: area num 1.
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size roundup to 32MB
+[    0.000000] software IO TLB: mapped [mem 0x00000107ca124000-0x00000107cc124000] (32MB)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 2046092
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:on, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] allocated 16449536 bytes of page_ext
+[    0.000000] ftrace: allocating 57326 entries in 56 pages
+[    0.000000] ftrace: allocated 56 pages with 3 groups
+[    0.000000] rcu: Hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=384 to nr_cpu_ids=1.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] RCU Tasks: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=1.
+[    0.000000] RCU Tasks Rude: Setting shift to 0 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=1.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] Root IRQ handler: aic_handle_irq
+[    0.000000] Root FIQ handler: aic_handle_fiq
+[    0.000000] irq_apple_aic: Using Fast IPIs
+[    0.000000] irq_apple_aic: Initialized with 2048/4096 IRQs * 1/2 die(s), 7 FIQs, 32 vIPIs
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer running at 1000.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x1fffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.000000] sched_clock: 61 bits at 1000MHz, resolution 1ns, wraps every 4398046511103ns
+[    0.000368] kfence: initialized - using 8388608 bytes for 255 objects at 0x(____ptrval____)-0x(____ptrval____)
+[    0.000613] Console: colour dummy device 80x25
+[    0.000707] printk: legacy console [tty0] enabled
+[    0.000832] Calibrating delay loop (skipped), value calculated using timer frequency.. 2000.00 BogoMIPS (lpj=4000000)
+[    0.001048] pid_max: default: 32768 minimum: 301
+[    0.001258] landlock: Up and running.
+[    0.001336] Yama: becoming mindful.
+[    0.001555] LSM support for eBPF active
+[    0.001694] Mount-cache hash table entries: 65536 (order: 5, 524288 bytes, linear)
+[    0.001857] Mountpoint-cache hash table entries: 65536 (order: 5, 524288 bytes, linear)
+[    0.002042] VFS: Finished mounting rootfs on nullfs
+[    0.002538] rcu: Hierarchical SRCU implementation.
+[    0.002596] rcu: 	Max phase no-delay instances is 1000.
+[    0.002924] EFI services will not be available.
+[    0.003037] smp: Bringing up secondary CPUs ...
+[    0.003134] smp: Brought up 1 node, 1 CPU
+[    0.003220] SMP: Total of 1 processors activated.
+[    0.003319] CPU: All CPU(s) started at EL2
+[    0.003404] CPU features: detected: Branch Target Identification
+[    0.003530] CPU features: detected: ARMv8.4 Translation Table Level
+[    0.003674] CPU features: detected: Data cache clean to the PoU not required for I/D coherence
+[    0.003850] CPU features: detected: Common not Private translations
+[    0.003981] CPU features: detected: CRC32 instructions
+[    0.004090] CPU features: detected: Data cache clean to Point of Deep Persistence
+[    0.004197] CPU features: detected: Data cache clean to Point of Persistence
+[    0.004284] CPU features: detected: Data independent timing control (DIT)
+[    0.004381] CPU features: detected: E0PD
+[    0.004466] CPU features: detected: Enhanced Counter Virtualization
+[    0.004597] CPU features: detected: Enhanced Privileged Access Never
+[    0.004725] CPU features: detected: Enhanced Virtualization Traps
+[    0.004849] CPU features: detected: Fine Grained Traps
+[    0.004958] CPU features: detected: Generic authentication (IMP DEF algorithm)
+[    0.005108] CPU features: detected: RCpc load-acquire (LDAPR)
+[    0.005229] CPU features: detected: LSE atomic instructions
+[    0.005342] CPU features: detected: Privileged Access Never
+[    0.005455] CPU features: detected: RAS Extension Support
+[    0.005564] CPU features: detected: Speculation barrier (SB)
+[    0.005679] CPU features: detected: Stage-2 Force Write-Back
+[    0.005793] CPU features: detected: TLB range maintenance instructions
+[    0.005925] CPU features: detected: XNX
+[    0.006019] alternatives: applying system-wide alternatives
+[    0.007310] CPU features: detected: ACTLR virtualization (architectural?)
+[    0.007414] CPU features: detected: ICV_DIR_EL1 trapping
+[    0.007612] Memory: 32379584K/32737472K available (19904K kernel code, 2770K rwdata, 15520K rodata, 3136K init, 1120K bss, 299472K reserved, 32768K cma-reserved)
+[    0.008058] devtmpfs: initialized
+[    0.012047] posixtimers hash table entries: 512 (order: 0, 8192 bytes, linear)
+[    0.012177] futex hash table entries: 256 (16384 bytes on 1 NUMA nodes, total 16 KiB, linear).
+[    0.012309] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
+[    0.012388] 0 pages in range for non-PLT usage
+[    0.012389] 128392 pages in range for PLT usage
+[    0.012629] DMI: not present or invalid.
+[    0.013202] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.013942] DMA: preallocated 4096 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.014109] audit: initializing netlink subsys (disabled)
+[    0.014370] thermal_sys: Registered thermal governor 'fair_share'
+[    0.014371] thermal_sys: Registered thermal governor 'bang_bang'
+[    0.014496] thermal_sys: Registered thermal governor 'step_wise'
+[    0.014617] thermal_sys: Registered thermal governor 'user_space'
+[    0.014742] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.014870] audit: type=2000 audit(0.012:1): state=initialized audit_enabled=0 res=1
+[    0.015162] cpuidle: using governor ladder
+[    0.015243] cpuidle: using governor menu
+[    0.015341] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.015429] ASID allocator initialised with 65536 entries
+[    0.015583] Serial: AMBA PL011 UART driver
+[    0.016555] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.016746] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/usb@402280000
+[    0.016941] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.017130] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/usb@40a280000
+[    0.017321] /soc/usb@402280000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@c/connector
+[    0.017510] /soc/usb@402280000: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.017668] /soc/phy@403000000: Fixed dependency cycle(s) with /soc/usb@402280000
+[    0.017822] /soc/phy@403000000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@c/connector
+[    0.018012] /soc/usb@40a280000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@a/connector
+[    0.018147] /soc/usb@40a280000: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.018241] /soc/phy@40b000000: Fixed dependency cycle(s) with /soc/usb@40a280000
+[    0.018383] /soc/phy@40b000000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@a/connector
+[    0.018575] /soc/pcie@1cb0000000: Fixed dependency cycle(s) with /soc/pcie@1cb0000000
+[    0.018737] /soc/pcie@1cb0000000/pci@0,0: Fixed dependency cycle(s) with /soc/pcie@1cb0000000/pci@0,0
+[    0.021388] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.021578] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/usb@402280000
+[    0.021768] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.021958] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/usb@40a280000
+[    0.022181] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/usb@402280000
+[    0.022301] /soc/usb@402280000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@c/connector
+[    0.022415] /soc/usb@402280000: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.022580] /soc/usb@402280000: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.022679] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.022839] /soc/phy@403000000: Fixed dependency cycle(s) with /soc/usb@402280000
+[    0.023000] /soc/phy@403000000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@c/connector
+[    0.023219] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/usb@40a280000
+[    0.023367] /soc/usb@40a280000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@a/connector
+[    0.023480] /soc/usb@40a280000: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.023708] /soc/usb@40a280000: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.023870] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.024066] /soc/phy@40b000000: Fixed dependency cycle(s) with /soc/usb@40a280000
+[    0.024191] /soc/phy@40b000000: Fixed dependency cycle(s) with /soc/spmi@388908000/usb-pd@a/connector
+[    0.024366] /soc/pcie@1cb0000000: Fixed dependency cycle(s) with /soc/pcie@1cb0000000
+[    0.024534] /soc/pcie@1cb0000000/pci@0,0: Fixed dependency cycle(s) with /soc/pcie@1cb0000000/pci@0,0
+[    0.032233] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.032316] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.032395] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.032478] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.032557] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.032640] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.033235] ACPI: Interpreter disabled.
+[    0.033436] iommu: Default domain type: Translated
+[    0.033537] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.033729] SCSI subsystem initialized
+[    0.033838] usbcore: registered new interface driver usbfs
+[    0.033957] usbcore: registered new interface driver hub
+[    0.034072] usbcore: registered new device driver usb
+[    0.034201] pps_core: LinuxPPS API ver. 1 registered
+[    0.034263] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.034376] PTP clock support registered
+[    0.034472] EDAC MC: Ver: 3.0.0
+[    0.040089] scmi_core: SCMI protocol bus registered
+[    0.040267] Advanced Linux Sound Architecture Driver Initialized.
+[    0.040546] vgaarb: loaded
+[    0.040658] clocksource: Switched to clocksource arch_sys_counter
+[    0.040949] VFS: Disk quotas dquot_6.6.0
+[    0.041040] VFS: Dquot-cache hash table entries: 2048 (order 0, 16384 bytes)
+[    0.041248] netfs: FS-Cache loaded
+[    0.041345] pnp: PnP ACPI: disabled
+[    0.042243] NET: Registered PF_INET protocol family
+[    0.042347] IP idents hash table entries: 262144 (order: 7, 2097152 bytes, linear)
+[    0.062454] tcp_listen_portaddr_hash hash table entries: 16384 (order: 4, 262144 bytes, linear)
+[    0.062579] Table-perturb hash table entries: 65536 (order: 4, 262144 bytes, linear)
+[    0.062703] TCP established hash table entries: 262144 (order: 7, 2097152 bytes, linear)
+[    0.063025] TCP bind hash table entries: 65536 (order: 7, 2097152 bytes, linear)
+[    0.063284] TCP: Hash tables configured (established 262144 bind 65536)
+[    0.063453] MPTCP token hash table entries: 32768 (order: 6, 786432 bytes, linear)
+[    0.063646] UDP hash table entries: 16384 (order: 6, 1048576 bytes, linear)
+[    0.063852] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.063975] NET: Registered PF_XDP protocol family
+[    0.064078] PCI: CLS 0 bytes, default 64
+[    0.064204] Trying to unpack rootfs image as initramfs...
+[    0.073169] kvm [1]: nv: 570 coarse grained trap handlers
+[    0.073357] kvm [1]: nv: 710 fine grained trap handlers
+[    0.073507] kvm [1]: IPA Size Limit: 42 bits
+[    0.073600] kvm [1]: Non-architectural vgic, tainting kernel
+[    0.073718] kvm [1]: GICv3: no GICV resource entry
+[    0.073820] kvm [1]: disabling GICv2 emulation
+[    0.073915] kvm [1]: GICv3 with broken locally generated SEI
+[    0.074029] kvm [1]: GICv3 sysreg trapping enabled ([G0G1D], reduced performance)
+[    0.074175] kvm [1]: GIC system register CPU interface enabled
+[    0.074250] kvm [1]: vgic interrupt IRQ33
+[    0.074310] kvm [1]: VHE mode initialized successfully
+[    0.074683] Initialise system trusted keyrings
+[    0.074796] workingset: timestamp_bits=42 (anon: 38) max_order=21 bucket_order=0 (anon: 0)
+[    0.075207] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.075353] 9p: Installing v9fs 9p2000 file system support
+[    0.075507] Key type asymmetric registered
+[    0.075594] Asymmetric key parser 'x509' registered
+[    0.075714] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.075883] io scheduler mq-deadline registered
+[    0.075979] io scheduler kyber registered
+[    0.080662] ledtrig-cpu: registered to indicate activity on CPUs
+[    0.083031] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.083335] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.083786] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.084154] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.085038] apple-pmgr-pwrstate 388280000.power-management:power-controller@80: always-on domain nub_spi0 is not on at boot
+[    0.085294] apple-pmgr-pwrstate 388280000.power-management:power-controller@88: always-on domain nub_ocla is not on at boot
+[    0.092978] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.093680] 3ad200000.serial: ttySAC0 at MMIO 0x3ad200000 (irq = 40, base_baud = 0) is a APPLE S5L
+[    0.093912] STM32 USART driver initialized
+[    0.095061] loop: module loaded
+[    0.095542] tun: Universal TUN/TAP device driver, 1.6
+[    0.095806] sky2: driver version 1.30
+[    0.096443] usbcore: registered new interface driver usb-storage
+[    0.096593] usbcore: registered new interface driver usbserial_generic
+[    0.096741] usbserial: USB Serial support registered for generic
+[    0.097212] i2c_dev: i2c /dev entries driver
+[    0.100940] hid: raw HID events driver (C) Jiri Kosina
+[    0.101060] usbcore: registered new interface driver usbhid
+[    0.101176] usbhid: USB HID core driver
+[    0.101765] drop_monitor: Initializing network drop monitor service
+[    0.101961] NET: Registered PF_INET6 protocol family
+[    0.102205] Segment Routing with IPv6
+[    0.102258] In-situ OAM (IOAM) with IPv6
+[    0.102321] NET: Registered PF_PACKET protocol family
+[    0.102408] 9pnet: Installing 9P2000 support
+[    0.102466] Key type dns_resolver registered
+[    0.108693] registered taskstats version 1
+[    0.108901] Loading compiled-in X.509 certificates
+[    0.116664] Demotion targets for Node 0: null
+[    0.116840] Key type .fscrypt registered
+[    0.116923] Key type fscrypt-provisioning registered
+[    0.117036] ima: No TPM chip found, activating TPM-bypass!
+[    0.117107] ima: Allocated hash algorithm: sha1
+[    0.117190] ima: No architecture policies found
+[    0.117988] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.118388] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.118798] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.119192] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.124785] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.125180] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.125587] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.125980] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.126610] clk: Not disabling unused clocks
+[    0.126699] PM: genpd: Not disabling unused power domains
+[    0.127032] ALSA device list:
+[    0.127097]   No soundcards found.
+[    0.347236] Freeing initrd memory: 18608K
+[    0.348241] Freeing unused kernel memory: 3136K
+[    0.348362] Run /init as init process
+[    0.348441]   with arguments:
+[    0.348506]     /init
+[    0.348554]   with environment:
+[    0.348619]     HOME=/
+[    0.348673]     TERM=linux
+[    0.353613] macsmc 38c600000.smc: RTKit: Initializing (protocol version 12)
+[    0.355620] macsmc 38c600000.smc: RTKit: Unknown oslog message: 31f1042e443e0b5
+[    0.355711] macsmc 38c600000.smc: RTKit: Unknown oslog message: 4000020fe3d025b
+[    0.355837] macsmc 38c600000.smc: RTKit: Unknown oslog message: 400004000625480
+[    0.355989] macsmc 38c600000.smc: RTKit: Unknown oslog message: 40000608d548533
+[    0.356568] macsmc-low-gpio: Failed to locate of_node [id: -1]
+[    0.356774] macsmc-reboot: Failed to locate of_node [id: -1]
+[    0.356905] macsmc-rtc: Failed to locate of_node [id: -1]
+[    0.357198] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.357599] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.358015] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.358409] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.360441] macsmc-gpio macsmc-gpio: First GPIO key: gP01 (0x67503031)
+[    0.367555] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.367951] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.368360] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.368755] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.369792] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.370082] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.370491] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.370884] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.372789] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.373184] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.373593] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.373986] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.375082] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.375372] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.375675] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.375963] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.376793] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.377083] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.377395] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.377680] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.378539] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.378827] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.379130] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.379431] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.380981] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.381105] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/usb@402280000
+[    0.381253] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.381380] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/usb@40a280000
+[    0.381760] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.382064] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.382374] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.382664] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.384894] apple-dart 402f00000.iommu: DART [pagesize 4000, 16 streams, bypass support: 1, bypass forced: 0, locked: 0, AS 42 -> 42] initialized
+[    0.385152] platform 402280000.usb: Adding to iommu group 0
+[    0.385250] apple-dart 402f80000.iommu: DART [pagesize 4000, 16 streams, bypass support: 1, bypass forced: 0, locked: 0, AS 42 -> 42] initialized
+[    0.385515] apple-dart 40af00000.iommu: DART [pagesize 4000, 16 streams, bypass support: 1, bypass forced: 0, locked: 0, AS 42 -> 42] initialized
+[    0.385771] platform 40a280000.usb: Adding to iommu group 1
+[    0.385861] apple-dart 40af80000.iommu: DART [pagesize 4000, 16 streams, bypass support: 1, bypass forced: 0, locked: 0, AS 42 -> 42] initialized
+[    0.386107] apple-dart 490000000.iommu: DART [pagesize 4000, 19 streams, bypass support: 1, bypass forced: 0, locked: 0, AS 42 -> 42] initialized
+[    0.386413] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.386709] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.387029] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.387327] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.390183] /soc/spmi@388908000/usb-pd@c/connector: Fixed dependency cycle(s) with /soc/phy@403000000
+[    0.390493] /soc/spmi@388908000/usb-pd@a/connector: Fixed dependency cycle(s) with /soc/phy@40b000000
+[    0.390764] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.391062] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.391383] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.391695] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.392307] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.392605] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.392950] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.393251] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.413442] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.413837] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.414247] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.414545] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.426647] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.427040] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.427447] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[    0.427840] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.464821] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.465145] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.465555] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.465951] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.466276] simple-framebuffer 107d548c000.framebuffer: deferred probe timeout, ignoring dependency
+[   10.466470] simple-framebuffer 107d548c000.framebuffer: [drm] pm_domain_attach_by_id(0) failed: -110
+[   10.466756] simple-framebuffer 107d548c000.framebuffer: [drm] Registered 1 planes with drm panic
+[   10.466940] [drm] Initialized simpledrm 1.0.0 for 107d548c000.framebuffer on minor 0
+[   10.484344] Console: switching to colour frame buffer device 160x50
+[   10.491185] simple-framebuffer 107d548c000.framebuffer: [drm] fb0: simpledrmdrmfb frame buffer device
+[   10.491562] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.491983] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: PS atc2_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.492367] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.492682] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: PS atc3_common: Failed to reach power state 0xf (now: 0x200f)
+[   10.498219] platform led-controller: deferred probe pending: leds_pwm: unable to request PWM for kbd_backlight
+[   10.498443] platform 380700000.power-management:power-controller@458: deferred probe pending: (reason unknown)
+[   10.498665] platform 380700000.power-management:power-controller@460: deferred probe pending: (reason unknown)
+[   10.498889] platform 380700000.power-management:power-controller@468: deferred probe pending: platform: supplier 380700000.power-management:power-controller@460 not ready
+[   10.499226] platform 380700000.power-management:power-controller@478: deferred probe pending: platform: supplier 380700000.power-management:power-controller@460 not ready
+[   10.499564] platform 380700000.power-management:power-controller@498: deferred probe pending: (reason unknown)
+[   10.499786] platform 380700000.power-management:power-controller@4a0: deferred probe pending: (reason unknown)
+[   10.500016] platform 380700000.power-management:power-controller@4b0: deferred probe pending: platform: supplier 380700000.power-management:power-controller@4a0 not ready
+[   10.500352] platform 380700000.power-management:power-controller@4b8: deferred probe pending: platform: supplier 380700000.power-management:power-controller@4a0 not ready
+[   10.500693] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: sync_state() pending due to 380700000.power-management:power-controller@458
+[   10.501002] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: sync_state() pending due to 380700000.power-management:power-controller@460
+[   10.501310] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: sync_state() pending due to 380700000.power-management:power-controller@498
+[   10.501617] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: sync_state() pending due to 380700000.power-management:power-controller@4a0
+[   10.501925] apple-pmgr-pwrstate 380700000.power-management:power-controller@378: sync_state() pending due to 388280000.power-management
+[   10.502178] apple-pmgr-pwrstate 380700000.power-management:power-controller@428: sync_state() pending due to 388280000.power-management
+[   10.502344] apple-pmgr-pwrstate 380700000.power-management:power-controller@450: sync_state() pending due to 388280000.power-management
+[   10.503466] apple-pmgr-pwrstate 380700000.power-management:power-controller@480: sync_state() pending due to 388280000.power-management
+[   10.504411] apple-pmgr-pwrstate 380700000.power-management:power-controller@278: sync_state() pending due to 3ad044000.pwm
+[   10.505354] apple-pmgr-pwrstate 380700000.power-management:power-controller@550: sync_state() pending due to 1cb0000000.pcie
+[   10.506345] apple-pmgr-pwrstate 380700000.power-management:power-controller@538: sync_state() pending due to 485c50000.sart
+[   10.507278] apple-pmgr-pwrstate 380700000.power-management:power-controller@548: sync_state() pending due to 4c5cc0000.nvme
+[   10.508161] apple-pmgr-pwrstate 380700000.power-management:power-controller@538: sync_state() pending due to 4c5cc0000.nvme

@@ -2,9 +2,9 @@ import hashlib
 import struct
 
 
-def read_root_auth(path, expected_sha256):
+def read_root_auth(path, expected_sha256, *, verify_hash=True):
     data = path.read_bytes()
-    if hashlib.sha256(data).hexdigest() != expected_sha256:
+    if verify_hash and hashlib.sha256(data).hexdigest() != expected_sha256:
         raise ValueError("Recovery root-hash SHA-256 mismatch")
 
     def read_field(offset, limit):

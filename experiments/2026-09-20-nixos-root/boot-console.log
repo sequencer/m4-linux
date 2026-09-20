@@ -1,0 +1,223 @@
+warning: Git tree '/home/sequencer/project/m4-linux' is dirty
+TTY> Heap limit: 0x10010134000 (128 MiB)
+uploading
+preparing_device_tree
+TTY> isp: Unsupported SoC
+TTY> FDT: bootargs = 'console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=1 panic=0 rdinit=/init'
+TTY> FDT: initrd at 0x10010160000 size 0x85a7047
+TTY> display: Hiding notch, 2560x1664 -> 2560x1600 (+64, 16:10)
+TTY> FDT: framebuffer@107d548c000 base 0x107d548c000 size 0xfa0000
+TTY> SEP: couldn't get enough random bytes for KASLR seed
+TTY> ADT: 256 bytes of random seed available
+TTY> FDT: KASLR seed initialized
+TTY> FDT: Passing 256 bytes of random seed
+TTY> FDT: reporting device serial number: M49KYH65C9
+TTY> FDT: CPU 0 is not alive, disabling...
+TTY> FDT: CPU 1 is not alive, disabling...
+TTY> FDT: CPU 2 is not alive, disabling...
+TTY> FDT: CPU 3 is not alive, disabling...
+TTY> FDT: CPU 4 is not alive, disabling...
+TTY> FDT: CPU 5 is not alive, disabling...
+TTY> FDT: CPU 7 is not alive, disabling...
+TTY> FDT: CPU 8 is not alive, disabling...
+TTY> FDT: CPU 9 is not alive, disabling...
+TTY> FDT: Pruned 6/6 CPU references in [AIC]/affinities/e-core-pmu-affinity
+TTY> FDT: Pruned 3/4 CPU references in [AIC]/affinities/p-core-pmu-affinity
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core0
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core1
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core2
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core3
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core4
+TTY> FDT: Pruning /cpus/cpu-map/cluster0/core5
+TTY> FDT: Pruning /cpus/cpu-map/cluster0
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core1
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core2
+TTY> FDT: Pruning /cpus/cpu-map/cluster1/core3
+TTY> FDT: Unable to find alias usb4_0_rc
+TTY> FDT: Unable to find alias usb4_0_pcie_adapter
+TTY> FDT: Unable to find alias usb4_0_nhi
+TTY> FDT: Unable to find alias usb4_0_nhi
+TTY> FDT: Unable to find alias usb4_1_rc
+TTY> FDT: Unable to find alias usb4_1_pcie_adapter
+TTY> FDT: Unable to find alias usb4_1_nhi
+TTY> FDT: Unable to find alias usb4_1_nhi
+TTY> FDT: Unable to find alias usb4_0_pcie
+TTY> FDT: Unable to find alias usb4_1_pcie
+TTY> FDT: unknown compatible, skip display reserved-memory setup
+TTY> FDT: GPU: Initializing GPU info
+TTY> ADT: GPU: unsupported chip!
+TTY> FDT: sep alias not found in devtree
+TTY> FDT: pmp not found in devtree
+TTY> ADT: nvram partition not found
+TTY> FDT: Disabling missing device /soc/usb@412280000
+TTY> FDT: Disabling missing device /soc/usb@41a280000
+TTY> FDT: Disabling secondary device /soc/iommu@412f00000 (122)
+TTY> FDT: Disabling secondary device /soc/iommu@412f80000 (123)
+TTY> FDT: Disabling secondary device /soc/phy@413000000 (125)
+TTY> FDT: Disabling secondary device /soc/iommu@41af00000 (126)
+TTY> FDT: Disabling secondary device /soc/iommu@41af80000 (127)
+TTY> FDT: Disabling secondary device /soc/phy@41b000000 (129)
+TTY> FDT: 'isp' not found
+TTY> FDT: 'isp' not found
+TTY> FDT: Reserving CTRR range 0x10006608000..0x10006614000
+TTY> FDT: DRAM at 0x10000000000 size 0x800000000
+TTY> FDT: Usable memory is 0x10002770000..0x107d099c000 (0x7ce22c000)
+TTY> FDT: Adding reserved-memory node flash@107d09a0000 (107d09a0000..107d09a4000) to RAM map
+TTY> FDT prepared at 0x10008134000
+uploading_kernel
+enabling_ane_power
+requesting_native_linux_handoff
+TTY> mca-switch node not found!
+TTY> pcie: Initializing t8132 PCIe controller
+TTY> pcie: ADT uses 8 reg entries per port
+TTY> pcie: No common tunables
+TTY> pcie: Initializing port 0
+TTY> pcie: Port 0 max speed = 2
+TTY> pcie: Initialized controller 0
+TTY> pcie: Error getting node /arm-io/apcie0
+TTY> pcie: Error getting node /arm-io/apcie-ge0
+TTY> pcie: Error getting node /arm-io/apcie-ge1
+TTY> dapf: Initialized /arm-io/dart-aop
+TTY> dapf: Initialized /arm-io/dart-mtp
+TTY> dapf: Initialized /arm-io/dart-pmp
+TTY> dapf: Initialized /arm-io/dart-dcp
+TTY> dapf: Initialized /arm-io/dart-dcpext0
+TTY> dapf: Initialized /arm-io/dart-isp
+TTY> dapf: Initialized /arm-io/dart-ane
+TTY> dapf: Error getting ADT node /arm-io/dart-ave dapf-instance property.
+TTY> Setting SMP mode to WFE...
+TTY> Preparing to boot kernel at 0x10018800000 with fdt at 0x10008134000
+handoff_command_returned_waiting_for_console
+--- TTY mode | Quit: CTRL+] | Menu: CTRL+T ---
+Preparing to run next stage at 0x10018800000...
+USB0: shutdown
+USB1: shutdown
+MMU: shutting down...
+MMU: shutdown successful, clearing caches
+Vectoring to next stage...
+[    0.000000] Booting Linux on physical CPU 0x0000010100 [0x611f0531]
+[    0.000000] Linux version 7.1.13 (nixbld@localhost) (gcc (GCC) 15.3.0, GNU ld (GNU Binutils) 2.46) #1-NixOS SMP PREEMPT Tue Jan  1 00:00:00 UTC 1980
+[    0.000000] KASLR enabled
+[    0.000000] random: crng init done
+[    0.000000] Machine model: Apple MacBook Air (13-inch, M4, 2025)
+[    0.000000] earlycon: dockchannel0 at MMIO 0x000000038812c000 (options '')
+[    0.000000] printk: legacy bootconsole [dockchannel0] enabled
+
+[1;32m<<< NixOS Stage 2 >>>[0m
+
+/nix/store/lcv1aa4axk8xmyn81v3c2c1vwl9hv6r7-nixos-system-m4-linux-26.11.20260911.eaad089/init: line 114: /dev/fd/63: No such file or directory
+running activation script...
+setting up /etc...
+starting systemd...
+P+q6E616D65\[18t[!p]104\[0m[?7h[1G[0J]3008;start=8959ddac88ec43e0a50ff7e43e1be3d2;user=root;hostname=m4-linux;machineid=4c7c9305fcac40aaa6e1e8a6f5e5944d;bootid=941949c20e9f4ebea7a9c7728dd82f8a;pid=1;pidfdid=1;comm=systemd;type=boot\
+
+[1;32m<<< Welcome to NixOS 26.11.20260911.eaad089 (aarch64) - ttyKIS0 >>>[0m
+KIS RAM system: log in as root (no password). Changes are lost on reboot.
+
+m4-linux login: root
+]3008;start=33457bc089e844579b7f73c90ead9b51;user=root;hostname=m4-linux;machineid=4c7c9305fcac40aaa6e1e8a6f5e5944d;bootid=941949c20e9f4ebea7a9c7728dd82f8a;pid=273;pidfdid=273;comm=login;targetuser=root;sessionid=1;type=session\[?2004h
+[1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m id; cat /etc/os-release; ps -p 1 -o pid,comm,args; findmnt /; findmnt /nix/store; systemctl is-system-running; systemctl --failed --no-pager; systemctl is-active serial-getty@ttyKIS0.service
+[?2004luid=0(root) gid=0(root) groups=0(root)
+ANSI_COLOR="0;38;2;126;186;228"
+BUG_REPORT_URL="https://github.com/NixOS/nixpkgs/issues"
+BUILD_ID="26.11.20260911.eaad089"
+CPE_NAME="cpe:/o:nixos:nixos:26.11"
+DEFAULT_HOSTNAME=nixos
+DOCUMENTATION_URL="https://nixos.org/learn.html"
+HOME_URL="https://nixos.org/"
+ID=nixos
+LOGO="nix-snowflake"
+NAME=NixOS
+PRETTY_NAME="NixOS 26.11 (Zokor)"
+SUPPORT_URL="https://nixos.org/community.html"
+VENDOR_NAME=NixOS
+VENDOR_URL="https://nixos.org/"
+VERSION="26.11 (Zokor)"
+VERSION_CODENAME=zokor
+VERSION_ID="26.11"
+    PID COMMAND         COMMAND
+      1 systemd         /run/current-system/systemd/lib/systemd/systemd
+TARGET SOURCE FSTYPE OPTIONS
+/      tmpfs  tmpfs  rw,relatime,mode=755
+TARGET    SOURCE    FSTYPE  OPTIONS
+/nix/store
+          /dev/loop0
+                    squashf ro,nosuid,nodev,relatime,errors=continue,threads=sin
+/nix/store
+          /dev/loop0
+                    squashf ro,nosuid,nodev,relatime,errors=continue,threads=sin
+degraded
+[4m [0m[4m [0m[4mUNIT                  [0m[4m [0m[4mLOAD  [0m[4m [0m[4mACTIVE[0m[4m [0m[4mSUB   [0m[4m [0m[4mDESCRIPTION           [0m
+[0;1;31m●[0m [0;1;31msystemd-sysctl.service[0m loaded [0;1;31mfailed[0m [0;1;31mfailed[0m Apply Kernel Variables
+
+[0;90m[0;38:5:245mLegend: LOAD   → Reflects whether the unit definition was properly loaded.[0m
+[0;90m[0;38:5:245m        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.[0m
+[0;90m[0;38:5:245m        SUB    → The low-level unit activation state, values depend on unit type.[0m
+
+1 loaded units listed.
+active
+[?2004h
+[1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m export SYSTEMD_COLORS=0 SYSTEMD_PAGER=cat TERM=dumb; journalctl -b -u systemd-sysctl --no-pager -o cat; ls -l /dev/fd; cat /etc/sysctl.d/60-nixos.conf; systemctl list-jobs --no-pager
+[?2004llrwxrwxrwx 1 root root 13 Mar 17 19:55 /dev/fd -> /proc/self/fd
+fs.inotify.max_user_instances=524288
+fs.inotify.max_user_watches=524288
+kernel.kptr_restrict=1
+kernel.pid_max=4194304
+kernel.poweroff_cmd=/nix/store/gnadg5slifq2r638xvz4pv6vrsdl9xkj-systemd-261.2/sbin/poweroff
+kernel.printk=1 4 1 7
+net.ipv4.ping_group_range=0 2147483647
+net.ipv6.conf.all.disable_ipv6=0
+net.ipv6.conf.default.disable_ipv6=0
+net.ipv6.conf.default.use_tempaddr=2
+vm.max_map_count=1048576
+No jobs running.
+
+[1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m cat /proc/bus/input/devices; ls /sys/class/i<put/devices; ls /sys/class/input; lsmod; dmesg | gr                                           [1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m -<keyboard|mtp|dockchannel|hid|spi|firmware' | tail -[1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m 1<em/systemd/lib/systemd/systemd-sysctl --strict 2>&1
+Module                  Size  Used by
+gpio_macsmc            49152  1
+apple_dart             65536  2
+spmi_apple_controller    49152  0
+pinctrl_apple_gpio     65536  0
+macsmc                 49152  1 gpio_macsmc
+apple_kis_tty          49152  0
+[    0.000000] earlycon: dockchannel0 at MMIO 0x000000038812c000 (options '')
+[    0.000000] printk: legacy bootconsole [dockchannel0] enabled
+[    0.000000] Kernel command line: console=tty0 earlycon=dockchannel,0x38812c000 console=ttyKIS0 maxcpus=1 idle=nop arm64.nowfxt arm64.nosme clk_ignore_unused pd_ignore_unused quiet loglevel=1 panic=0 rdinit=/init
+[    0.064486] apple-pmgr-pwrstate 388280000.power-management:power-controller@80: always-on domain nub_spi0 is not on at boot
+[    0.075953] hid: raw HID events driver (C) Jiri Kosina
+[    0.075966] usbcore: registered new interface driver usbhid
+[    0.075967] usbhid: USB HID core driver
+[    0.465490] apple-kis-tty: ttyKIS0 at MMIO 0x38812c000 (irq = 0, base_baud = 115200) is a Apple KIS DockChannel
+[    0.465498] printk: legacy bootconsole [dockchannel0] disabled
+[    1.465054] systemd[1]: Clear Stale Hibernate Storage Info skipped, unmet condition check ConditionPathExists=/sys/firmware/efi/efivars/HibernateLocation-8cf2644b-4b0b-428f-9387-6d876050dc67
+Couldn't write '33' to 'vm/mmap_rnd_bits': Invalid argument
+
+[1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m </sys/bus/platform/devices | grep -Ei 'mtp|dock|spi|hi[1;31m[]0;root@m4-linux: ~root@m4-linux:~]#[0m s  < 'mtp|dock|spi|hid'; cat /proc/sys/vm/mmap_rnd_bits
+18
+m4# <*' -o -iname '*keyboard*' -o -iname '*dockchannel*'
+active
+active
+ls: cannot access '/dev/input': No such file or directory
+Module                  Size  Used by
+gpio_macsmc            49152  1
+apple_dart             65536  2
+spmi_apple_controller    49152  0
+pinctrl_apple_gpio     65536  0
+macsmc                 49152  1 gpio_macsmc
+apple_kis_tty          49152  0
+m4# <tty; findmnt -n -o TARGET,SOURCE,FSTYPE / /nix/stor<@tty1 serial-getty@ttyKIS0; systemctl --failed --no<tl --failed --no-pager; cat /proc/bus/input/devices
+
+CHECKPOINT_2026_09_20
+7.1.13
+/dev/ttyKIS0
+active
+active
+  UNIT                   LOAD   ACTIVE SUB    DESCRIPTION
+● systemd-sysctl.service loaded failed failed Apply Kernel Variables
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+1 loaded units listed.
+m4# 

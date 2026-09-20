@@ -5,9 +5,21 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+    m4-linux-modules = {
+      url = "path:/nix/store/alqj6q1b3842j734xjm8lb3lji8i412q-linux-m4-7.1.13-modules";
+      flake = false;
+    };
+    m4-linux-dev = {
+      url = "path:/nix/store/kg1vifddf9jm3jy71ynd60913i2ihkv7-linux-m4-7.1.13-dev";
+      flake = false;
+    };
+    gravity-bootloader-source = {
+      url = "git+https://github.com/GravityLinux/bootloader.git?rev=ff7489ca80ed7d541c54aac23cb2beaaaf4d8766&submodules=1&shallow=1";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, rust-overlay }:
+  outputs = { self, nixpkgs, rust-overlay, gravity-bootloader-source, m4-linux-modules, m4-linux-dev }:
     let
       systems = [ "aarch64-darwin" "aarch64-linux" "x86_64-linux" "x86_64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
@@ -18,6 +30,17 @@
         targets = [ "aarch64-unknown-none-softfloat" ];
       };
     in {
+      nixosConfigurations.m4-ram = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {
+          kisModule = self.packages.aarch64-linux.kis-tty;
+          debugModules = self.packages.aarch64-linux.linux-debug-modules;
+        };
+        modules = [
+          ./nixos/ram-root.nix
+          { nixpkgs.pkgs = pkgsFor.aarch64-linux; }
+        ];
+      };
       packages = forAllSystems (system:
         let
           pkgs = pkgsFor.${system};
@@ -53,6 +76,20 @@
             });
             usbmuxd-tools = pkgs.usbmuxd;
             firmware-upstream-tools = pkgs.idevicerestore;
+            dfu-kis-trace-tools = pkgs.libirecovery.overrideAttrs (previous: {
+              postPatch = (previous.postPatch or "") + ''
+                substituteInPlace src/libirecovery.c \
+                  --replace-fail 'irecv_error_t err = irecv_usb_bulk_transfer(client, endpoint, (unsigned char *) req, reqSize, &sent, USB_TIMEOUT);' 'irecv_error_t err = irecv_usb_bulk_transfer(client, endpoint, (unsigned char *) req, reqSize, &sent, USB_TIMEOUT);
+                    fprintf(stderr, "M4 KIS TX portal=%u index=0x%x requested=%zu sent=%d result=%d\n", req->portal, req->indexLo | ((req->indexHiRplSizeLo & 3) << 8), reqSize, sent, err);' \
+                  --replace-fail 'err = irecv_usb_bulk_transfer(client, endpoint | 0x80, (unsigned char *) rpl, *rplSize, &rcvd, USB_TIMEOUT);' 'err = irecv_usb_bulk_transfer(client, endpoint | 0x80, (unsigned char *) rpl, *rplSize, &rcvd, USB_TIMEOUT);
+                    fprintf(stderr, "M4 KIS RX portal=%u index=0x%x capacity=%zu received=%d result=%d\n", req->portal, req->indexLo | ((req->indexHiRplSizeLo & 3) << 8), *rplSize, rcvd, err);' \
+                  --replace-fail 'err = irecv_kis_request(client, &req.hdr, sizeof(req), &rpl.hdr, &rplSize);' 'err = irecv_kis_request(client, &req.hdr, sizeof(req), &rpl.hdr, &rplSize);
+                    fprintf(stderr, "M4 KIS WRITE32 portal=%u index=0x%x value=0x%x result=%d received=%zu expected=%zu size=%u status=%u\n", portal, index, value, err, rplSize, sizeof(rpl), rpl.size, rpl.status);'
+              '';
+            });
+            firmware-kis-trace-tools = pkgs.idevicerestore.override {
+              libirecovery = base.dfu-kis-trace-tools;
+            };
             firmware-revive-tools = pkgs.idevicerestore.overrideAttrs (previous: {
               postPatch = (previous.postPatch or "") + ''
                 substituteInPlace src/idevicerestore.c \
@@ -144,6 +181,131 @@
             };
           };
           linux = pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+            nixos-rootfs = pkgs.callPackage "${nixpkgs}/nixos/lib/make-squashfs.nix" {
+              storeContents = [ self.nixosConfigurations.m4-ram.config.system.build.toplevel ];
+              comp = "zstd -Xcompression-level 6";
+            };
+            nixos-root-initramfs = pkgs.makeInitrd {
+              contents = [
+                { object = "${pkgs.pkgsStatic.busybox}/bin/busybox"; symlink = "/bin/busybox"; }
+                { object = linux.nixos-rootfs; symlink = "/nix-store.squashfs"; }
+                { object = "${linux.kis-tty}/lib/modules/7.1.13/extra/apple_kis_tty.ko"; symlink = "/apple_kis_tty.ko"; }
+                {
+                  object = pkgs.writeScript "m4-nixos-root-init" ''
+                    #!/bin/busybox sh
+                    /bin/busybox mkdir -p /bin /dev /proc /sys /newroot
+                    /bin/busybox --install -s /bin
+                    export PATH=/bin
+                    mount -t devtmpfs devtmpfs /dev
+                    mount -t proc proc /proc
+                    mount -t sysfs sysfs /sys
+                    insmod /apple_kis_tty.ko || exec sh
+                    exec </dev/ttyKIS0 >/dev/ttyKIS0 2>&1
+                    stty sane clocal -crtscts
+                    mount -t tmpfs -o mode=0755 tmpfs /newroot || exec sh
+                    mkdir -p /newroot/nix/store /newroot/dev /newroot/proc /newroot/sys /newroot/run
+                    mount -t tmpfs -o mode=0755 tmpfs /newroot/run || exec sh
+                    cp -L /nix-store.squashfs /newroot/run/nix-store.squashfs || exec sh
+                    mount -t squashfs -o loop,ro,nodev,nosuid /newroot/run/nix-store.squashfs /newroot/nix/store || exec sh
+                    mount --move /dev /newroot/dev
+                    mount --move /proc /newroot/proc
+                    mount --move /sys /newroot/sys
+                    exec switch_root /newroot ${builtins.unsafeDiscardStringContext "${self.nixosConfigurations.m4-ram.config.system.build.toplevel}/init"}
+                  '';
+                  symlink = "/init";
+                }
+              ];
+            };
+            kis-tty = pkgs.stdenv.mkDerivation {
+              pname = "m4-kis-tty";
+              version = "0.1";
+              src = ./drivers/kis-tty;
+              nativeBuildInputs = [ pkgs.kmod pkgs.autoPatchelfHook ];
+              buildInputs = [ pkgs.elfutils pkgs.zlib ];
+              hardeningDisable = [ "all" ];
+              buildPhase = ''
+                cp -r ${m4-linux-dev}/lib/modules/7.1.13 "$TMPDIR/kernel"
+                chmod -R u+w "$TMPDIR/kernel"
+                autoPatchelf "$TMPDIR/kernel/build/scripts"
+                substituteInPlace "$TMPDIR/kernel/build/Makefile" \
+                  --replace-fail /nix/store/kg1vifddf9jm3jy71ynd60913i2ihkv7-linux-m4-7.1.13-dev/lib/modules/7.1.13 "$TMPDIR/kernel"
+                make -C "$TMPDIR/kernel/build" M=$PWD ARCH=arm64 \
+                  PAHOLE_VERSION=131 CONFIG_DEBUG_INFO_BTF_MODULES= modules
+              '';
+              installPhase = ''
+                install -Dm644 apple_kis_tty.ko $out/lib/modules/7.1.13/extra/apple_kis_tty.ko
+              '';
+            };
+            linux-debug-modules = pkgs.makeModulesClosure {
+              kernel = {
+                name = "linux-m4-7.1.13-modules";
+                outPath = m4-linux-modules.outPath;
+              };
+              firmware = pkgs.runCommand "m4-debug-empty-firmware" { } "mkdir -p $out/lib/firmware";
+              rootModules = [ "gpio-macsmc" "pinctrl-apple-gpio" "spmi-apple-controller" "apple-dart" ];
+            };
+            linux-debug-initramfs = pkgs.makeInitrd {
+              contents = [
+                { object = "${pkgs.pkgsStatic.busybox}/bin/busybox"; symlink = "/bin/busybox"; }
+                { object = "${linux.linux-debug-modules}/lib/modules"; symlink = "/lib/modules"; }
+                { object = "${pkgs.kmod}/bin/modprobe"; symlink = "/bin/modprobe"; }
+                { object = "${linux.kis-tty}/lib/modules/7.1.13/extra/apple_kis_tty.ko"; symlink = "/apple_kis_tty.ko"; }
+                {
+                  object = pkgs.writeScript "m4-linux-debug-init" ''
+                    #!/bin/busybox sh
+                    /bin/busybox mkdir -p /bin /dev /proc /sys /tmp /run /etc /root/.ssh
+                    /bin/busybox --install -s /bin
+                    export PATH=/bin
+                    mount -t devtmpfs devtmpfs /dev
+                    mount -t proc proc /proc
+                    mount -t sysfs sysfs /sys
+                    mkdir -p /dev/pts /sys/kernel/debug
+                    mount -t devpts devpts /dev/pts
+                    mount -t debugfs debugfs /sys/kernel/debug
+                    insmod /apple_kis_tty.ko || exec sh
+                    stty -F /dev/ttyKIS0 sane clocal -crtscts
+                    export TERM=vt100
+                    export PS1='m4# '
+                    echo 'ttyKIS0::respawn:/bin/sh -i' > /etc/inittab
+                    for module in gpio-macsmc pinctrl-apple-gpio spmi-apple-controller apple-dart; do
+                      modprobe "$module" 2>> /run/modules.log
+                    done
+                    exec /bin/busybox init
+                  '';
+                  symlink = "/init";
+                }
+              ];
+            };
+            linux-ram-initramfs = pkgs.makeInitrd {
+              contents = [
+                {
+                  object = "${pkgs.pkgsStatic.busybox}/bin/busybox";
+                  symlink = "/bin/busybox";
+                }
+                {
+                  object = pkgs.writeScript "m4-linux-init" ''
+                    #!/bin/busybox sh
+                    /bin/busybox mkdir -p /bin /dev /proc /sys /tmp
+                    /bin/busybox --install -s /bin
+                    export PATH=/bin
+                    mount -t devtmpfs devtmpfs /dev
+                    mount -t proc proc /proc
+                    mount -t sysfs sysfs /sys
+                    exec </dev/console >/dev/console 2>&1
+                    echo M4_LINUX_RAM_INIT_OK
+                    uname -a
+                    cat /proc/cmdline
+                    cat /proc/meminfo
+                    while true; do
+                      echo M4_LINUX_RAM_ALIVE
+                      cat /proc/uptime
+                      sleep 10
+                    done
+                  '';
+                  symlink = "/init";
+                }
+              ];
+            };
             kisd = pkgs.rustPlatform.buildRustPackage {
               pname = "kisd";
               version = "1.1.0";
@@ -210,9 +372,40 @@
               installPhase = ''
                 mkdir -p $out/share/m1n1-sptm
                 cp build/m1n1.bin build/m1n1.macho $out/share/m1n1-sptm/
+                cp build/m1n1.elf build/m1n1-raw.elf $out/share/m1n1-sptm/
                 cp -r proxyclient $out/share/m1n1-sptm/
               '';
             };
+            gravity-bootloader = linux.m1n1-sptm.overrideAttrs (_: {
+              pname = "gravity-bootloader";
+              version = "ff7489c";
+              src = gravity-bootloader-source;
+              postPatch = "";
+              patches = [ (pkgs.writeText "m4-atc-tunables.patch" ''
+                diff --git a/src/kboot_atc.c b/src/kboot_atc.c
+                --- a/src/kboot_atc.c
+                +++ b/src/kboot_atc.c
+                @@ -280,1 +280,2 @@
+                     {"atc-phy,t8122", -1, NULL, 0},
+                +    {"atc-phy,t8132", -1, NULL, 0},
+                @@ -370,1 +371,5 @@
+                -        adt_getprop(adt, adt_node, tunable_info->adt_name, &tunables_len);
+                +        adt_getprop(adt, adt_node, tunable_info->adt_name, &tunables_len);
+                +    if (!tunable_adt && adt_is_compatible_at(adt, adt_node, "atc-phy,t8132", 0) &&
+                +        strcmp(tunable_info->adt_name, "tunable_ATC0AXI2AF") == 0) {
+                +        tunable_adt = adt_getprop(adt, adt_node, "tunable_ATCAXI2AF", &tunables_len);
+                +    }
+                @@ -446,1 +452,2 @@
+                -    if (adt_is_compatible_at(adt, adt_node, "atc-phy,t8122", 0)) {
+                +    if (adt_is_compatible_at(adt, adt_node, "atc-phy,t8122", 0) ||
+                +        adt_is_compatible_at(adt, adt_node, "atc-phy,t8132", 0)) {
+              '') ];
+              installPhase = ''
+                mkdir -p $out/share/gravity-bootloader
+                cp build/m1n1.bin build/m1n1.macho build/m1n1.elf build/m1n1-raw.elf $out/share/gravity-bootloader/
+                cp -r proxyclient $out/share/gravity-bootloader/
+              '';
+            });
           };
         in base // linux // { default = self.packages.${system}.experiment-recorder; }
       );
@@ -247,6 +440,8 @@
             usbutils
           ] ++ (if pkgsFor.${system}.stdenv.hostPlatform.isLinux then [
             pkgsFor.${system}.apfs-fuse
+            pkgsFor.${system}.dosfstools
+            pkgsFor.${system}.mtools
             pkgsFor.${system}.procps
             pkgsFor.${system}.util-linux
             (rustToolchainFor system)

@@ -1,3 +1,4 @@
+import argparse
 import ctypes
 import hashlib
 import json
@@ -11,9 +12,11 @@ GROUP = "0F4B67C2-B48A-4F7F-B324-B02EB3362E5A"
 CONTAINER = "AC02838C-5B6E-4B30-8BE1-C73937F42460"
 
 
-def main():
+def main(*, group=None, container_uuid=None, verify_hash=True):
+    group = group or GROUP
+    container_uuid = container_uuid or CONTAINER
     containers = plistlib.loads(subprocess.check_output(["diskutil", "apfs", "list", "-plist"]))["Containers"]
-    target = next(container for container in containers if container["APFSContainerUUID"] == CONTAINER)
+    target = next(container for container in containers if container["APFSContainerUUID"] == container_uuid)
     if target["CapacityCeiling"] != 3999997952:
         raise ValueError("Unexpected stub size")
     mounts = {}
@@ -21,14 +24,15 @@ def main():
         info = plistlib.loads(subprocess.check_output(["diskutil", "info", "-plist", volume["DeviceIdentifier"]]))
         mounts[tuple(volume["Roles"])] = Path(info["MountPoint"])
     stage = mounts[("Data",)] / "staging"
-    for line in (stage / "SHA256SUMS").read_text().splitlines():
-        expected, relative = line.split("  ", 1)
-        with (stage / relative).open("rb") as source:
-            if hashlib.file_digest(source, "sha256").hexdigest() != expected:
-                raise ValueError(f"Hash mismatch: {relative}")
+    if verify_hash:
+        for line in (stage / "SHA256SUMS").read_text().splitlines():
+            expected, relative = line.split("  ", 1)
+            with (stage / relative).open("rb") as source:
+                if hashlib.file_digest(source, "sha256").hexdigest() != expected:
+                    raise ValueError(f"Hash mismatch: {relative}")
     system = mounts[("System",)]
-    preboot = mounts[("Preboot",)] / GROUP
-    recovery = mounts[("Recovery",)] / GROUP / "usr/standalone/firmware"
+    preboot = mounts[("Preboot",)] / group
+    recovery = mounts[("Recovery",)] / group / "usr/standalone/firmware"
     if (preboot / "restore").exists():
         raise ValueError("Already staged; inspect before retrying")
     manifest = plistlib.loads((stage / "restore/BuildManifest.plist").read_bytes())
@@ -44,8 +48,9 @@ def main():
     resources.mkdir()
     shutil.copy2(stage / "boot.bin", resources / "boot.bin")
     (mounts[("Data",)] / "private/var/db/dslocal").mkdir(parents=True)
-    report = {"group": GROUP, "container": CONTAINER, "build": "25G83",
-              "payload_sha256": hashlib.sha256((resources / "boot.bin").read_bytes()).hexdigest(),
+    report = {"group": group, "container": container_uuid, "build": "25G83",
+              "payload_sha256": hashlib.sha256((resources / "boot.bin").read_bytes()).hexdigest() if verify_hash else None,
+              "file_hashes_verified_this_run": verify_hash,
               "owner_credentials_present": False, "personalized": False, "boot_verified": False}
     (system / "m4-stub-report.json").write_text(json.dumps(report, indent=2) + "\n")
     library = ctypes.CDLL("libSystem.B.dylib", use_errno=True)
@@ -58,4 +63,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--group", required=True)
+    parser.add_argument("--container", required=True)
+    parser.add_argument("--skip-file-hashes", action="store_true")
+    arguments = parser.parse_args()
+    main(group=arguments.group, container_uuid=arguments.container,
+         verify_hash=not arguments.skip_file_hashes)

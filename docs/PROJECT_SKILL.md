@@ -1,5 +1,77 @@
 # m4-linux 项目 Skill
 
+- GravityLinux/gravity-m4 head9807df349e5c审计：顶部Asahi合并b39c4d→head共42个单父提交；直接M4 36（GPU21），加SMC GPIO依赖39，全部配套42。与当前Asahi7.1.8分叉ahead758/behind28不能当M4数量。877c574大DCP提交已带nowfxt；8178b0ad是T8132 NVMe IO queue寄存器支持；GPU/SSD board启用主要为J773g而非J713。详见GRAVITY_M4_COMMITS_20260915.md含全部commit链接。未应用/构建/启动，GPU测试仅作者声明，不当本机验收。
+
+- 2026-09-15 Linux patch 审计：详见 LINUX_PATCH_AUDIT_20260915.md。实际候选来自 Asahi tag asahi-7.1.8-1 加九个额外 patch，多为 M1 DP-alt；不是项目独立 Linux package。已定位最小 T8132 DT fbf2e630、AIC3 1f0cf051、idle=nop 13e700ef 和 Sven NVMe 固件修复系列（已包含，不能再笼统称缺失）。J713 无 NVMe/USB/PCIe 完整 DT，NVMe/DART 等为模块而 RAM 根没带模块；cpuidle 白名单不含 T8132，WFxT override 仍缺。精确 SMP 修复未闭环。不连接/启动目标；前轮只检查到 ttyACM 不存在，没有上传或重启。
+
+- Linux 路线最新状态：用户要求先核对参考，live boot 暂停；只在 M1 构建了 Nix RAM initramfs 和未验证 loader，未上传 Image/DTB/initrd、未 prepare/handoff、未重启/Recovery。详见 LINUX_BOOT_REFERENCES_20260914.md。候选 7.1.8 有 J713 DT 和 idle=nop，但无 arm64.nowfxt override，delay 仍用 WFIT；cpuidle.off=1 不能替代 idle=nop。先对齐参考补丁再实验，不将脚本草稿当已验证入口。原生 Linux 无需先跑 SPTM/XNU；ACM1 仅 HV VUART，direct boot 后 ACM 消失不能单独判失败，earlycon=efifb 也不保证适用于本机 30bpp/FDT 启动。
+
+- 15:22:30最新实机验收：本轮083C641C stub持久化m1n1已启动，双USB串口/串号M49KYH65C9，UART NOP与proxy NOP均ok，等待器exit0已结束；结果raw/post-erase-m1n1/proxy-check.json。控制台EL2、32GiB、mBoot18000.161.10，MCC/cpufreq unsupported仍存在、无Linux payload。保持proxy待命，无guest/内核上传/重启，不复用旧iSC；此结果不是Linux/SPTM guest支持验收。
+
+- 最新083C641C stub安装已完成：配对1TR实测后csrutil disable、kmutil raw/entry2048/VA0与bputil-c-a-s均exit0，Permissive/sip0=7f/sip1/2/3=1/coih445A4EE6…、Paired/Valid。bless恢复原Macintosh HD默认，读回2D4EFB69；已正常关机，待用户物理选择M4 Linux Bootstrap→继续。900秒单次代理等待器仅检查同串号双端口并NOP，45秒检查上限；预定raw/post-erase-m1n1/proxy-check.json尚待结果，不说已启动m1n1。无guest，未hash，原生变更后重启待验收。
+
+- 15:14后SSH恢复，当前owner元数据已复制到新083C641C stub；bputil-g成功Reduced/Valid/coih absent，bless成功且boot-volume指新stub。当前Recovery对stub仍Not Paired，未kmutil。已告知并发送sync; shutdown-h，等待用户物理长按进入新stub配对1TR后重启ssh.sh，再核对Paired才能继续。断线不是已证实崩溃；未重做分区/stage，后续安装完恢复macOS默认启动。
+
+- 最新重装断点：post-erase-m1n1/stage.txt实机exit0，固定Nix boot.bin和25G83资源已部署，未hash。随后owner复制和bputil-g两次SSH均TCP超时，未执行；15:08:14USB断开，ping仍通而22不通，未主动重启。尚未生成stub策略/bless/kmutil/代理验收。先恢复Recovery SSH，按新083C641C卷组继续owner与配对，禁止重跑缩容/建卷/stage。详见M1N1_POST_ERASE_20260914.md。
+
+- 新m1n1重装正在进行，当前状态转见M1N1_POST_ERASE_20260914.md：原macOS缩至128GB，fsck退出0；新4GB stub容器35889682/卷组083C641C-7DBA-44D7-9C86-7925CE0050DE，另1GB EFI、余下未分配。未动iSC/系统Recovery。使用固定25G83公共资源和Nix m1n1，stage新增显式UUID及--skip-file-hashes；不跑旧固定UUID脚本、不复用旧个性化状态、不启动guest。部署/策略/配对/代理验收分开报告。
+
+- 15:02按用户明确授权已对新macOS卷组2D4EFB69执行csrutil disable与bputil -c -a -s -v，所有者交互认证成功、两命令exit0。复读SIP disabled/Authenticated Root disabled/Permissive/sip0=7f/sip1/2/3=1，Paired/Integrity Valid、coih absent。未分区、kmutil或重启；不是所有硬件安全关闭，也不是guest防brick修复。证据raw/post-erase-recovery-145831/security-after.txt。交互ssh必须exec tty=true，只有ssh -tt但host stdin关闭无法回答提示；旧等待确认进程已终止后重开，本轮无遗留交互任务。
+
+- 14:58新Recovery SSH已实测：root@172.24.5.124、26.6.2/25G83、ECID匹配、Paired one true recoveryOS/Integrity Valid。新主容器EFE517FC、卷组2D4EFB69-013E-4618-997E-3AFDB3F1E2E5；sequencer UID501/UUID0A98877A-4388-469D-8D3C-99CDBAD24C43为Volume Owner，AppleSetupDone存在。全盘仍原厂布局，无stub/Linux；Full/SIP/SSV/CTRR开启、coih absent。本次只读，未分区/改策略/启动guest。证据raw/post-erase-recovery-145831/state.txt，旧UUID全部不套用；不再要求用户重做账户。
+
+- 用户随后进入抹盘后的新Recovery：记录Recovery入口可达，但未确认备用模式；主机见05ac:1905，172.24.5.185:8000的ssh.sh及临时host key均HTTP200。新Recovery需重新启动sshd，不能沿用旧会话/旧磁盘UUID，也不能据USB枚举称SSH已连通。先只读获取当前系统/卷/所有者，再决定安装步骤。
+
+- 最新用户验收：针对完整Erase后的设置界面/原生启动询问，用户确认“成功了”。本轮Linux DFU完整恢复及恢复后启动已获确认，覆盖下方等待验收状态；账户配置、重复重启、普通/备用Recovery尚未单独验收。保留25G83+firmware-kis-trace-tools显式Erase成功基线，不归因于日志修复、不自动重跑guest、不回放旧iSC/LocalPolicy。
+
+- 14:49:48本轮Linux完整Erase已DONE/restore_exit=0，日志raw/linux-dfu-erase-143802/；14:50确认恢复/usbmon进程和锁均已清理，USB仅root hubs，等待用户原生设置助理/稳定启动验收，不自动m1n1/guest。此次iBSS也完整status512后真实切换；不可再称Linux未完成过Erase。exec外层exit1来自本机bash_logout的set-u未定义变量，非刷机失败；以后长任务login=false。旧UUID/iSC/LocalPolicy失效，不回放。尚未证明旧失败根因或日志补丁具有修复作用。
+
+- 14:38：Upgrade 实际14:35:43 DONE/restore_exit=0，但用户反馈原生仍失败并要求抹盘。14:37第一次Erase因旧usbmon锁未启动；root0600 pid文件不可读让cleanup卡在wait，核对后只杀旧cat，非恢复进程。新capture由用户预建pid文件并关闭继承fd9。14:38:02已核对Port身份，运行单次显式--erase/Customer Erase Install (IPSW)，raw/linux-dfu-erase-143802/，会话91030；尚无完成验收。M1备份不动，旧iSC不回放。
+
+- 14:33 新实机覆盖“无 DFU”：Port 身份核对后单次 firmware-kis-trace-tools 显式 Customer Upgrade Install (IPSW)，无 erase。iBSS BOOT_IMG 完整回复 size4/status512 后约1.7秒真实断开，iBEC/恢复内核成功，RestoreOS身份通过并进入固件更新。status非零不能直接判错误。尚无最终退出/原生验收；Update与旧Erase、日志时序、设备状态差异未控制，不能称已找到根因。日志 raw/linux-dfu-upgrade-143305/，恢复会话5876；结束必须更新状态，不自动重复或转Erase。
+
+- 14:30 Linux DFU 再次排查：USB 仍只有 root hubs，未上传/恢复。新增独立 firmware-kis-trace-tools（上游 idevicerestore + 仅三处 KIS stderr 的 libirecovery），Nix 构建及 ldd/derivation 检查通过，不继承旧 strict/guard/流程补丁。BOOT_IMG 回复需完整长度和成功传输才可解读，失败时零初始化 status 不是设备成功。120 秒 usbmon/udev 是一次被动采集，不是刷机等待器；设备回来后重新采集再实验。不使用仍含 hash 的旧 erase wrapper，不称日志补丁已修复故障。见 DFU_HOST_DIFFERENTIAL_20260914.md 最新节。
+
+- 本次 restore 故障的修复顺序见 NVRAM_GUEST_INCIDENT_20260914.md“修复决策”：原生入口先取证并选择 Macintosh HD；只有 firmware Recovery 时先读 iBoot，历史 setenv PIPE 不当成可写；仅 DFU 时采用已成功的 Finder host，Revive 后按实际结果决定是否 Restore。最新探测 USB 无 M4、最后已知 SSH 超时，未实施修复。64KiB 启动前 proxy 不是整 NOR 备份，不回刷。正常 guest 关机也会同步持久状态，不能当作 NVRAM 隔离。不得把缺输入固件与本轮 restore 根因混为一谈。
+
+- 13:26之后重要更新：用户要求补资源重跑，已本地准备RAM FAT盘与serial=3/-s入口，但尚未上传或启动。旧guest中hv.reboot执行整机WDT硬复位后ACM未返回，用户报告循环及restore URL；不是新资源导致。当前guest会话已结束，不再说cont运行中。新iSC、无旧错误指针读取仍出现该现象，不能将旧副本/错误解码当唯一根因。离线确认保存guest ADT和ioreg保留qspi→spinor→anvram（QSPI0x3ad118000，NOR分区0x700000+0x100000），HV OFF映射是直通；AppleARMNORNVRAM::write在0xfffffe0008aca630可调用NOR写。RAM根不隔离真实NVRAM。启动前proxy基线65536字节、bank11/16、generation124，已解析active boot-command=fsboot/auto-boot=true/boot-volume新stub；没有故障后差异，不宣称具体变量被改。iBoot失败处理自身也会写恢复变量，必须区分原因与结果。调查见docs/NVRAM_GUEST_INCIDENT_20260914.md，不清NVRAM或刷机替代取证。
+
+- 13:20 补充：默认FUD资源路径已由本轮dyld反汇编落实为 `[preboot][bootobjectspath]/usr/standalone/firmware/FUD`；resolver先检查iSCPreboot对应boot路径，ENOENT才退普通Preboot。当前iSC只读副本volume0的stub目录仅LocalPolicy、无boot，RAM根+iSC没有默认所需FUD资源；尚缺本次用户态具体错误/是否使用FWDirectory覆盖的证据。RTBuddy bootloader +0xe0指向mtp下载器，状态/timeout=0/0，不是已证实state=1死锁。长进程名读proc+0x5dd最多33字节，Mobile前缀不能当FUD进程。当前guest已cont且临时断点清空，最小人工步骤为在空闲Type-C接外置USB键盘/鼠标，不拔调试线、不重启；usb-drd1节点存在但外设输入尚未验证。
+
+- 2026-09-14 13:14 更新覆盖下方“本轮未读 IORegistry”的旧阶段描述：同一 guest 原脚本遍历得到1425条、一条unmapped；固定 getRegistryRoot 全局0xfffffe000c658488。三个 AIDImageDownloader 的 vtable=__ZTV+16，类型确认后读取 stm/ipdf、multi-touch/mtfw、mtp-transport/mtpf：Need FUD Download(OSNumber)=1，isDownloadComplete(+0x180 bit0)=false。LoadingGroup同样是OSNumber，绝不可当OSString指针；AHTLoaderName此处实际为OSSymbol。已确认输入固件加载未完成，不只是猜测IRQ。用户态GenericKextUpdaterService profile包含/private/preboot和boot-objects-path，但本次具体文件错误尚未拿到。短时loadFirmware/beginFirmwareDownload硬件断点无命中后已清除，guest已cont；不重启、不hash、不消费FIFO。证据见本轮实验README与ignored raw/guest-current-isc-1/aid-status.json。
+
+- 同一新 iSC guest 继续调试：十核栈主要落在固定内核 PMC 读取/公共路径，不是已识别的 MTP 阻塞栈。保存的 guest ADT 根 UUID 指 RAM Recovery，但 apfs-preboot-uuid/boot-objects-path 仍指 Bootstrap；RAM GPT 只有根+iSC，没有该 Preboot，是资源呈现缺口，尚未证实为输入固件加载的实际失败路径。不要盲改 UUID 或称确定根因。HV shell 中 exec 是汇编接口，Python 多行必须 builtins.exec；本次误用在 host 汇编阶段失败，之后正确采样并 cont，未重启。
+
+- 新 iSC guest 输入现场已复测：真实进程列表含 WindowServer/hidd/Boot Picker，Options 转圈但 Tab/触控板无响应。MTP/Dock 状态 IRQ_MASK=0、RX_COUNT=0x408；短时 ASYNC 跟踪 IRQ/FIFO/mailbox 未见 guest 访问，之后已删除 tracer 并 cont。不是据旧现场推断；不消费 RX_DATA，不实例化会写 IRQ_MASK 的 DockChannel。下一步需定位固件请求或 transport 初始化等待，尚不能断言中断丢失或设备树缺失。本轮没有运行 IORegistry 解码、没有重启。
+
+- 本轮新 iSC guest 已实际执行，用户确认 Options 图形界面，但鼠标无法移动；键盘尚未确认。host guest 进程仍在，当前 console 无新 panic，但不能据进程存活断言 guest 无死锁。新 iSC 没有自动解决输入问题，不能将输入失效全归旧 iSC；此前 MTP 寄存器/ioreg 结果是旧实验，不能套作本轮实时状态。此次只查本地日志，未读取 IORegistry、未消费 FIFO、未重启。
+
+- 用户明确要求新资源启动 guest 后，本轮已从 Recovery bless Bootstrap 并 reboot，实际返回 m1n1。现运行原 launcher，新增 --skip-file-hashes 遵从不再计算 hash 的要求；内核/root 的 digest 字段此模式取既有清单，report.file_hashes_verified_this_run=false，新 iSC 无 digest。使用 current-25G83 目录和 /home/sequencer/m4-linux-backups/20260914-clean-123915/current-isc/isc.raw，非旧 iSC。16GiB/10核/graphics，日志 experiments/2026-09-14-reinstall-retained/raw/guest-current-isc-1/。默认启动已改为 Bootstrap，不再称 macOS 默认。移除新守卫不表示旧风险已解决；上传与 guest 实际开始分开判断，不并发连接串口、不自动重刷。
+
+- 最新：用户要求不再 hash、不做防御性开发。本轮 macOS 已实际启动，随后 SSH 确认 macOS Paired 1TR。只读 dd /dev/rdisk0s1（当次 UUID 2935ACB5-2A69-4996-942A-87B29BC17A2F）复制到 /home/sequencer/m4-linux-backups/20260914-clean-123915/current-isc/isc.raw，524288000 字节，传输退出 0。manifest 无 sha256，未验证原子快照；不是旧副本，也不是全盘备份。既有 guest launcher 的 --isc-manifest 仍要求 sha256，不能称此清单可直接供原脚本启动。没有启动 guest 或修改 target；保持 Recovery 会话。
+
+- 最新用户要求覆盖此前推进计划：撤回防御性开发，专注干净备份。guest_memory 新增模块、进程/panic 读取接口改造、IORegistry 入口封锁、run-recovery-guest 新增无条件退出均已撤回；下文关于这些改造的文字仅是历史。保留原有版本/哈希检查、更新后的 25G83 资源和事故记录，不追加策略框架、不擅自启动 guest。备份须复制实际文件而非仅 symlink；不得把本机文件备份称为 M4 全盘可恢复镜像。
+
+- 离线隔离审计见 GUEST_ISOLATION_AUDIT.md：固定 HV.init 将 arm-io ranges 注册为 OFF，pt_update 的 OFF 实际 map_hw 恒等直通，不是禁访问。删除 ANS ADT 节点不是 stage-2 deny。新增 guest_memory.GuardedReader，显式 VA/PA 白名单、kernel hash、分页全请求预检、精确长度、预算、失败锁死；进程/console 诊断必须注入 reader，无默认 live 范围。IORegistry 因缺可靠 OSObject 类型 profile 入口封锁。旧 APFS BRK 写入及上游 HV 仍未完成隔离审计，launcher 不解锁。22 项离线检查和额外失败锁死验证通过不代表硬件异常可恢复。此次未触碰 target。
+
+- 当前资源统一入口改为 docs/CURRENT_BOOT_ASSETS.md 与 artifacts/current-25G83-post-restore-20260914/manifest.json；从固定 25G83 官方输入重新解包内核/转换 Recovery，旧实验目录仅历史。实测 result 最初仍为 d617ceee… 的原 PR 构建，尽管 stub 安装的是 779c9ac3…；prepare-current-assets 校验拒绝后重新 nix build .#m1n1-sptm，result 已对齐 779c9ac3…。不要只看包名/PR commit 判断本地补丁是否匹配。manifest 明确 current_isc_capture=null；绝不自动带入旧 iSC 或 restore staging 的旧 update-plan。run-recovery-guest.py 的 main 现直接退出，prepare-only 也封锁，防止历史命令再运行；资产更新不是解除隔离门槛或防 brick 保证。
+
+- 2026-09-14 12:25 UTC 本轮新安装 m1n1 已实机验收：物理选择启动后 USB ttyACM0/1、UART NOP/proxy NOP 均成功，EL2，32GiB，mBoot-18000.161.10。结果在 experiments/2026-09-14-reinstall-retained/raw/m1n1-proxy-check.json，等待器退出 0，代理无人占用。MCC/cpufreq unsupported 和 No valid payload found 仍存在，不等于 Linux 支持。没有运行 guest，旧 guest 路径仍暂停；原生 macOS 和备用 Recovery 验收尚待进行。Nix bash 本次无 compgen，等待设备用 test 再校验 USB 身份。
+
+- 本轮 m1n1 启动验收已安排：安装文件/策略再次核对通过，不重复 kmutil；保留 macOS 默认启动，正常关机后由用户在启动选项选择 M4 Linux Bootstrap → Continue。Nix 下 900 秒 USB 等待器只执行一次 UART/proxy NOP，不运行 guest。未见实际成功 JSON 前不得称本轮代理验收通过；等待器过期应先核对进程，不声称一直监听。
+
+- 2026-09-14 12:21 UTC 最新覆盖：用户进入 Macintosh HD 配对 1TR 后，按明确授权完成原生 macOS csrutil disable 和 bputil -c -a -s -v 742D07D7-4C78-4BAB-B4E1-D6F3B239A2D8，均退出 0。两套安装 csrutil status 均 disabled；两套策略均 Permissive/sip0=7f/sip1/2/3=1，配对完整性 Valid。macOS coih absent，stub 原 coih 保留，默认启动仍 macOS。没有执行 macOS kmutil、清除 iSC/策略、重启或 guest。只能称这些启动安全限制已配置关闭，不能称所有安全机制关闭或此前 bootloop 已修好；仍待原生启动与本轮 m1n1 验收。
+
+- 最新覆盖：新 stub 530FE39B 的配对 1TR 已完成 csrutil disable、kmutil configure-boot 和 bputil -s，Permissive/sip0=7f/sip1/2/3=1，尚无本轮 m1n1 启动验收。默认启动已恢复 Macintosh HD（742D07D7）。用户明确要求原生 macOS 也关闭安全限制；在 stub Recovery 对 Macintosh HD 执行 csrutil disable 被明确拒绝 Not Paired，退出 69，macOS 仍 Full/SIP/SSV/CTRR/参数过滤 Enabled。必须关机、物理长按进入 Macintosh HD 配对 Recovery 后再操作，不重复在错误配对环境尝试；安装列表次序会变，按名称和 UUID 而非固定数字选择。关闭这些选项不是已验证的 bootloop 修复，也不等于清除 SEP/iSC/所有硬件安全。
+
+- 2026-09-14 12:00 UTC 后再次完整 DFU 的新安装记录在 experiments/2026-09-14-reinstall-retained/README.md，覆盖此前所有 UUID/启动验收。已保留 128GB macOS、新建 4GB stub 和 1GB EFI，其余未分配；新 stub 组 530FE39B-6AE3-47D0-9168-29F1A7EE2763 已部署固定资源并新生成 Reduced 策略，尚未 kmutil。bless 暂选 stub 供配对 Recovery；配对安装结束恢复 macOS 默认启动，再物理选择 m1n1 验收。所有者只用本轮系统元数据，绝不恢复旧 iSC/LocalPolicy。保留原系统并非已通过缩容后启动验收。旧 guest 仍暂停。
+
+- 本轮 guest 后普通/备用 Recovery 均失败，现有 run-recovery-guest 路径暂停复用。删除 ans 不构成 SEP/NVRAM/协处理器隔离；不得再使用抹盘前 iSC 副本运行 live guest。先完成正常系统/两种 Recovery 回归验收、统一内存读取安全守卫及持久化路径审计，详见 GUEST_INCIDENT_20260914.md。错误 OSNumber→OSString 读取与失联紧邻，但无法解释持久 bootloop 的完整机制，禁止把推测当根因。
+
+- HV 只读诊断也可能导致 target 异常：2026-09-14 交互解析 IORegistry 时将 LoadingGroup OSNumber 当 OSString，未验 hv_translate 返回值便 readmem，随后 checksum/EIO、USB 丢失。不能把 readmem 当作无风险操作；先解码对象类型，严格拒绝空指针、未映射 VA 和跨页未分段读取。该故障与 guest 输入根因分开记录，禁止失联后自动刷机。完整过程见 experiments/2026-09-14-macos-guest/README.md。
+
+- graphics guest 的 console ring 可长期只保留早期 XNU 日志，不能据其 write_pointer 不变断言未到 userspace。2026-09-14 HV 只读进程结构确认 launchd/WindowServer/Boot Picker 存在；键盘触控板仍不可用。读取输入状态时不要启动独占 MTP 实验脚本或读 RX 数据寄存器，它们会重配硬件或消费 guest 数据。详见 experiments/2026-09-14-macos-guest/README.md。
+
 - 2026-09-14 重装后的独立 stub 已重新完成配对 1TR、csrutil、kmutil 和 bputil -s，普通重启实机 USB/UART/proxy NOP 全通过；见 M1N1_RESUME_20260914.md。这是新布局的验收，不复用旧 UUID。ttyACM 为 root:dialout 0660；Nix Python 通过 sudo 运行需要显式传递 PYTHONPATH，否则 pyserial 不可见。只提升本次检查进程，不全局安装依赖或 chmod 串口。
 
 - 重装创建账号后必须重新检查 Volume Owner 和 Recovery 配对状态。本轮新账号 sequencer 已是 owner，但当前仍 ordinary recoveryOS/Not Paired，stub 无 LocalPolicy；不能复用 liqi 的旧凭据或抹盘前安装验收。多个 Preboot 同名卷的挂载顺序会令 stub 实际挂到 `/Volumes/Preboot 1`，其旧绝对 restore 链接可能失效；按卷 UUID 定位并核对路径。新基线见 M1N1_RESUME_20260914.md。

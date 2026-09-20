@@ -1,0 +1,110 @@
+warning: Git tree '/home/sequencer/project/m4-linux' is dirty
+TTY> Heap limit: 0x10010394000 (128 MiB)
+m1n1 base: 0x10005dc8000
+Fetching ADT (0x00074000 bytes)...
+Total region size: 0x72c000 bytes
+Loading kernel image (0x118004 bytes)...
+..............................
+Copying SEPFW (0x5cc000 bytes)...
+Adjusting addresses in ADT...
+Pushing ADT (469576 bytes)...
+Setting up bootargs...
+Copying stub...
+Entry point: 0x10005dc8800
+Reloading into stub at 0x10010bd0240
+TTY> Preparing to run next stage at 0x10010bd0240...
+TTY> USB0: shutdown
+TTY> USB1: shutdown
+TTY> MMU: shutting down...
+TTY> MMU: shutdown successful, clearing caches
+TTY> Vectoring to next stage...
+TTY> Initialized dockchannel UART at 0x388128000
+TTY> Device info:
+TTY>   Model: Mac16,12
+TTY>   Target: J713
+TTY>   Board-ID: 0x2c
+TTY>   Chip-ID: 0x8132
+TTY> 
+TTY> CPU init (MIDR: 0x611f0531 smp_id:0x6)...
+TTY>   CPU part: 0x53 rev: 0x11
+TTY>   CPU: M4 Donan (P core)
+TTY> 
+TTY> boot_args at 0x100064f0000
+TTY>   revision:     3
+TTY>   version:      2
+TTY>   virt_base:    0xe770000
+TTY>   phys_base:    0x10002770000
+TTY>   mem_size:     0x7ce234000
+TTY>   top_of_kdata: 0x10006614000
+TTY>   video:
+TTY>     base:       0x107d53ec000
+TTY>     display:    0x1
+TTY>     stride:     0x2800
+TTY>     width:      2560
+TTY>     height:     1664
+TTY>     depth:      30bpp
+TTY>     density:    1
+TTY>   machine_type: 0
+TTY>   devtree:      0x11cf4000
+TTY>   devtree_size: 0x74000
+TTY>   cmdline:      
+TTY>   boot_flags:   0x0
+TTY>   mem_size_act: 0x800000000
+TTY> 
+TTY> 
+TTY> 
+TTY> m1n1 unknown
+TTY> Copyright The Asahi Linux Contributors
+TTY> Licensed under the MIT license
+TTY> 
+TTY> Running in EL2
+TTY> 
+TTY> OS FW version: unknown (mBoot-18000.161.10)
+TTY> System FW version: unknown (mBoot-18000.161.10)
+TTY> Heap base: 0x10006614000
+TTY> MCC: Unsupported version:mcc,t8132
+TTY> MMU: Initializing...
+TTY> MMU: RAM base: 0x10000000000
+TTY> MMU: Top of normal RAM: 0x107d09a4000
+TTY> MMU: Adding Normal-NC mapping at 0x107d53ec000 (0x3f70000) for framebuffer
+TTY> MMU: Adding Normal-NC mappings at 0x10000000000..0x10000004000 for /chosen/iboot-handoff
+TTY> MMU: Adding Device-nGnRE mapping at 0x1c50000000 (0x4000)
+TTY> MMU: Adding Device-nGnRE mapping at 0x1c60000000 (0x4000)
+TTY> MMU: Adding Device-nGnRE mapping at 0x1c70000000 (0x4000)
+TTY> MMU: Adding Device-nGnRE mapping at 0x1c80000000 (0x4000)
+TTY> MMU: Adding Device-nGnRE mapping at 0x1cb0000000 (0x14000)
+TTY> MMU: Adding Normal-NC mapping at 0x107fff1c000 (0x20000)
+TTY> MMU: Adding Normal-NC mapping at 0x107ffedc000 (0x10000)
+TTY> MMU: Adding Normal-NC mapping at 0x107ffebc000 (0x20000)
+TTY> MMU: Adding Normal-NC mapping at 0x107ffe7c000 (0x10000)
+TTY> MMU: Adding Normal-NC mapping at 0x107ffe5c000 (0x20000)
+TTY> MMU: Adding Normal-NC mapping at 0x107ffe1c000 (0x10000)
+TTY> MMU: Adding Normal-NC mapping at 0x107fffb8000 (0x4000)
+TTY> MMU: Adding Normal-NC mapping at 0x107fff70000 (0x4000)
+TTY> MMU: SCTLR_EL1: 30900180 -> 30901085
+TTY> MMU: running with MMU and caches enabled!
+TTY> AIC: Version 3 @ 0x381000000
+TTY> AIC: AIC3 with 1/2 dies, 2048/4096 IRQs, reg_size:40004, config:10000, extintrcfg_stride:04a00, intmaskset_stride:04a00, intmaskclear_stride:04a00
+TTY> Primary WDT register @ 0x3882b0000
+TTY> Primary WDT disabled
+TTY> Secondary WDT register @ 0x3882b8008
+TTY> Secondary WDT disabled
+TTY> pmgr: Cleaning up device states...
+TTY> pmgr: initialized, 392 devices on 1 dies found.
+TTY> display: Display is internal
+TTY> display: Display is already initialized (2560x1664)
+TTY> fb init: 2560x1664 (30) [s=2560] @0x107d53ec000
+TTY> fb console: max rows 48, max cols 64
+TTY> fb: display logo
+TTY> cpufreq: Chip 0x8132 is unsupported
+TTY> Initialization complete.
+TTY> Checking for payloads...
+TTY> Devicetree compatible value: apple,j713
+TTY> No more payloads at 0x10005ee0000
+TTY> No valid payload found
+TTY> dart: dart /arm-io/dart-usb0 at 0x402f80000 is a t8110
+TTY> USB0: initialized at 0x10006618090
+TTY> dart: dart /arm-io/dart-usb1 at 0x40af80000 is a t8110
+TTY> USB1: initialized at 0x10006618560
+TTY> Running proxy...
+Proxy is alive again

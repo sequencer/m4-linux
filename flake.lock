@@ -1,5 +1,51 @@
 {
   "nodes": {
+    "gravity-bootloader-source": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789603111,
+        "narHash": "sha256-L6aHghh+wRXIGJYS8s7L/ma5nBpK5wBwF0EgvHPRMyE=",
+        "ref": "refs/heads/main",
+        "rev": "ff7489ca80ed7d541c54aac23cb2beaaaf4d8766",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/GravityLinux/bootloader.git"
+      },
+      "original": {
+        "rev": "ff7489ca80ed7d541c54aac23cb2beaaaf4d8766",
+        "shallow": true,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/GravityLinux/bootloader.git"
+      }
+    },
+    "m4-linux-dev": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-bH4no9w4QJFCvKjIf+qNvf2YTC3C82ORO1dZxSyi9Zs=",
+        "path": "/nix/store/kg1vifddf9jm3jy71ynd60913i2ihkv7-linux-m4-7.1.13-dev",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/kg1vifddf9jm3jy71ynd60913i2ihkv7-linux-m4-7.1.13-dev",
+        "type": "path"
+      }
+    },
+    "m4-linux-modules": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1,
+        "narHash": "sha256-4Hkd5In64qdL6v+FqD8+mfQFvAhm5vbWjHWa97rCrh0=",
+        "path": "/nix/store/alqj6q1b3842j734xjm8lb3lji8i412q-linux-m4-7.1.13-modules",
+        "type": "path"
+      },
+      "original": {
+        "path": "/nix/store/alqj6q1b3842j734xjm8lb3lji8i412q-linux-m4-7.1.13-modules",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1789149629,
@@ -18,6 +64,9 @@
     },
     "root": {
       "inputs": {
+        "gravity-bootloader-source": "gravity-bootloader-source",
+        "m4-linux-dev": "m4-linux-dev",
+        "m4-linux-modules": "m4-linux-modules",
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay"
       }

@@ -16,6 +16,8 @@ M4 Apple Silicon 上的原生 Linux 支持研究与实现。
 
 ## 当前判断
 
+**2026-09-20 实机状态：原生 Linux 7.1.13 已进入 NixOS RAM root 的 systemd 和 root login，KIS 双向 TTY 可用；内置键盘尚未接通。** 当前事实、已知失败和恢复入口见 [`NixOS RAM root checkpoint`](experiments/2026-09-20-nixos-root/README.md)。下面的路线判断保留为早期研究背景，不代表当前启动方式。
+
 M4 的主要新问题不是普通设备树适配，而是 SPTM 位于 EL2 之上的 GL2，并拥有页表和部分系统状态。现有 M1–M3 的 m1n1 hypervisor 路径不能直接作为 M4 Linux 启动方案。
 
 当前优先路线：
@@ -30,6 +32,10 @@ iBoot / BootKC
 ```
 
 ## 文档
+
+- [`docs/GUEST_ISOLATION_AUDIT.md`](docs/GUEST_ISOLATION_AUDIT.md)：已撤回改造的历史审计记录，不代表当前代码。
+
+- [`docs/CURRENT_BOOT_ASSETS.md`](docs/CURRENT_BOOT_ASSETS.md)：当前 25G83 资源清单、离线重建与备份边界。
 
 - [`docs/NEW_FIRMWARE_GUEST_EXPERIMENT.md`](docs/NEW_FIRMWARE_GUEST_EXPERIMENT.md)：新版实机 timer 解锁验收、完整内存 HLE 断言、16GiB XNU/ApplePMGR panic 与 PTY pitfall
 
