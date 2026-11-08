@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-08",
+  "target": "M4 T8132 / J713",
+  "firmware": "27.0 / 26A428 / mBoot-20457.1.29",
+  "result": "Persistent Mach-O stage 1 automatically chainloads the existing EFI m1n1/boot.bin, U-Boot, and disk NixOS",
+  "stage1_sha256": "91515e7ef64c133f53f303949e94ec03dddd626f4f6ce3bff4438476c6e1ed4a",
+  "stage1_bytes": 4079616,
+  "m1n1_revision": "5fdf9002fba3a11db1342a24a8cdd83121837509",
+  "packaging_commit": "ed31cbf4ce9f6794836cf2ddcf23d72477b25e38",
+  "packaging_main_merge": "d800a87",
+  "installation_mode": "kmutil configure-boot Mach-O mode without --raw",
+  "image4_properties": {
+    "kcbf": 0,
+    "kcbz": 0,
+    "kcep": 18446741874803820544,
+    "kcev": 0,
+    "kclf": 4063232,
+    "kclo": 18446741874803752960,
+    "kclz": 16384,
+    "kcrf": 0,
+    "kcrz": 65536,
+    "kcsf": 0,
+    "kcsz": 0,
+    "kcwf": 589824,
+    "kcwz": 3473408,
+    "kcxf": 65536,
+    "kcxz": 524288
+  },
+  "policy": {
+    "security": "Permissive",
+    "sip0": "7f",
+    "sip1": 1,
+    "sip2": 1,
+    "sip3": 1,
+    "smb2": 1,
+    "pairing_integrity": "Valid"
+  },
+  "automatic_boot_verification": {
+    "from_paired_recovery": true,
+    "from_linux_reboot": true,
+    "manual_proxy_commands": false,
+    "kernel": "7.1.9",
+    "system_state": "running",
+    "failed_systemd_units": 0,
+    "services_active": [
+      "sshd",
+      "m4-display",
+      "greetd"
+    ]
+  },
+  "nixos_activation": "Not performed: dry-activate showed unrelated regressions relative to the running generation. Only the Apple custom boot object was installed; existing disk stage 2 and NixOS remain active.",
+  "scope": "SPTM-free handoff does not establish that all CTRR/CTXR controls are disabled. The earlier proxy capture still showed ACC CTRR-C and CTXR control lock bits.",
+  "raw_evidence": [
+    "automatic-stage1.json",
+    "policy-after-automatic-macho.txt",
+    "automatic-macho-custom-info.json",
+    "automatic-boot-first-runtime.txt",
+    "automatic-boot-second-runtime.txt",
+    "colmena-build.log",
+    "colmena-dry-activate.log"
+  ],
+  "raw_evidence_location": "raw/ (ignored by Git; personalized images and machine identifiers stay local)"
+}
